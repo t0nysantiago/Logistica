@@ -8,10 +8,10 @@ public class Produto {
     
     private double preco;
     private String nome;
-    private String codigo;
+    private int codigo;
     private int quantEstoque;
 
-    public Produto(double preco, String nome, String codigo, int quantEstoque) {
+    public Produto(double preco, String nome, int codigo, int quantEstoque) {
         this.preco = preco;
         this.nome = nome;
         this.codigo = codigo;
@@ -34,11 +34,11 @@ public class Produto {
         this.nome = nome;
     }
 
-    public String getCodigo() {
+    public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
