@@ -27,11 +27,16 @@ public class Teste {
       //  banco.addProduto(p1);
       //  banco.addProduto(p2);
         
+     // Cliente c1 = new Cliente(2000, "Tony", "05927918581", 20);
+      
+     // banco.addCliente(c1);
         
         for(int i = 0; i < banco.produtos.size(); i++){
             System.out.println("preco " + banco.produtos.get(i).getPreco());
         }
-        
+        for(int i = 0; i < banco.clientes.size(); i++){
+            System.out.println("nome " + banco.clientes.get(i).getNome());
+        }
         
     }
     
