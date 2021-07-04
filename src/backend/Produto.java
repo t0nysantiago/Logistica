@@ -1,10 +1,12 @@
 package backend;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Tony
  */
-public class Produto {
+public class Produto implements Serializable{
     
     private double preco;
     private String nome;

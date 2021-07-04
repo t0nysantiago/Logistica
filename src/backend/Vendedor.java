@@ -1,13 +1,16 @@
 package backend;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Tony
  */
-public class Vendedor extends Funcionario implements Autenticavel{
+public class Vendedor extends Funcionario implements Autenticavel, Serializable{
     
-    public Vendedor(String Nome, String CPF, int Idade) {
+    public Vendedor(int senha, String Nome, String CPF, int Idade) {
         super(Nome, CPF, Idade);
+        this.senha = senha;
     }
     
     @Override

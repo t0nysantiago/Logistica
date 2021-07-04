@@ -1,13 +1,16 @@
 package backend;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Tony
  */
-public class Dono extends Funcionario implements Autenticavel{
+public class Dono extends Funcionario implements Autenticavel, Serializable{
     
-    public Dono(String Nome, String CPF, int Idade) {
+    public Dono(int senha, String Nome, String CPF, int Idade) {
         super(Nome, CPF, Idade);
+        this.senha = senha;
     }
     
     private int senha;
