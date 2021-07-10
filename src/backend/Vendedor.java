@@ -73,7 +73,7 @@ public class Vendedor extends Funcionario implements Autenticavel, Serializable{
         return true;
     }
 
-
+/*
     public void fazVenda(){
         
         BancoDeDados banco = new BancoDeDados();
@@ -91,7 +91,7 @@ public class Vendedor extends Funcionario implements Autenticavel, Serializable{
             if(banco.vendedores.get(i).getCodigoIdent() == codVendDigitado){
                 
             for(int j = 0; j < banco.produtos.size(); j++){    
-                if(banco.produtos.get(j).getPreco() == codProdDigitado){
+                if(banco.produtos.get(j).getCodigo() == codProdDigitado){
                     
                     quantProdDigitado = entrada.nextInt();
                     
@@ -115,4 +115,5 @@ public class Vendedor extends Funcionario implements Autenticavel, Serializable{
             }
         
 }
+*/
 }

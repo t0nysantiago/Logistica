@@ -5,6 +5,9 @@
  */
 package backend;
 
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author jonny
@@ -27,13 +30,23 @@ public class Teste {
         banco.addProduto(p1);
         banco.addProduto(p2);
         
-        Cliente c1 = new Cliente(2000, "Tony", "000000001", 20);
+        //Cliente c1 = new Cliente(2000, "Tony", "000000001", 20);
       
-        banco.addCliente(c1);
+        //banco.addCliente(c1);
         
-        Dono d1 = new Dono(0101, "Jonny", "000000002", 20);
+        //Dono d1 = new Dono(0101, "Jonny", "000000002", 20);
         
-        banco.addDono(d1);
+        //banco.addDono(d1);
+        
+        //Gerente ger = new Gerente(1030, "Jobson", "00000000001", 56);
+        
+        banco.aumentaEstoque();
+        
+        banco.listaProdCadastrados();
+        
+        //Vendedor vend = new Vendedor(1003, 0506, 20000, "kaio", "000000008", 29);
+        
+        //vend.fazVenda();
         
         //for(int i = 0; i < banco.produtos.size(); i++){
         //    System.out.println("preco " + banco.produtos.get(i).getPreco());
@@ -43,5 +56,4 @@ public class Teste {
         //}
         
     }
-    
 }

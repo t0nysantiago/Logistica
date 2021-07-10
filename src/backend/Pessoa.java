@@ -4,6 +4,9 @@ package backend;
  *
  * @author jonny
  */
+
+import java.util.InputMismatchException;
+
 public class Pessoa {
     
     private String Nome;
@@ -39,7 +42,5 @@ public class Pessoa {
     public void setIdade(int Idade) {
         this.Idade = Idade;
     }
-    
-    
     
 }
