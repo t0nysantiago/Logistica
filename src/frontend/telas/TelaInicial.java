@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 package frontend.telas;
+import backend.BancoDeDados;
+import frontend.Logistica;
+import frontend.telas.TelaFuncionario;
+import frontend.telas.IdentificacaoCliente;
 
 /**
  *
@@ -11,11 +15,20 @@ package frontend.telas;
  */
 public class TelaInicial extends javax.swing.JFrame {
 
+    
+    Logistica logistica = new Logistica();
+    
+    static BancoDeDados bancoDeados;
+   
     /**
      * Creates new form TelaInicial
+     * @param banco
      */
-    public TelaInicial() {
+    public TelaInicial(BancoDeDados banco) {
         initComponents();
+        
+        this.bancoDeados = banco;
+        
     }
 
     /**
@@ -99,8 +112,17 @@ public class TelaInicial extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+     
+    
+      
+        
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // funcionario
+        dispose();       
+        TelaFuncionario telaFunc = new TelaFuncionario(bancoDeados);
+        telaFunc.setVisible(true);
         System.out.println("Funcionario");
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -109,8 +131,14 @@ public class TelaInicial extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    
+       
+       
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // cliente
+        dispose();
+        IdentificacaoCliente idcli = new IdentificacaoCliente(bancoDeados);
+        idcli.setVisible(true);
         System.out.println("Cliente");
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -141,14 +169,16 @@ public class TelaInicial extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaInicial().setVisible(true);
+                new TelaInicial(bancoDeados).setVisible(true);
             }
         });
     }
 
+  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

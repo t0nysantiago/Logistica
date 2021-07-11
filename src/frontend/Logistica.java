@@ -5,6 +5,7 @@
  */
 package frontend;
 
+import backend.BancoDeDados;
 import frontend.telas.TelaInicial;
 
 /**
@@ -13,13 +14,15 @@ import frontend.telas.TelaInicial;
  */
 public class Logistica {
 
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
          
-        TelaInicial telaIncial = new TelaInicial();
+        BancoDeDados banco = new BancoDeDados();
+        TelaInicial telaIncial = new TelaInicial(banco);
         telaIncial.setVisible(true);
         
         

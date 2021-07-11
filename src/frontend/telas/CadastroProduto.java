@@ -20,12 +20,17 @@ import javax.swing.JOptionPane;
  * @author jonny
  */
 public class CadastroProduto extends javax.swing.JFrame {
-
+    
+     static BancoDeDados bancoDeDados;
+      
     /**
      * Creates new form CadastroProduto
+     * @param banco
      */
-    public CadastroProduto() {
+    public CadastroProduto(BancoDeDados banco) {
         initComponents();
+        
+        this.bancoDeDados = banco;
     }
 
     /**
@@ -164,20 +169,20 @@ public class CadastroProduto extends javax.swing.JFrame {
         int quant = Integer.parseInt(quantProduto.getText());
         Produto prod = new Produto(preco, nomeProduto.getText(), codigo, quant); 
         
-       BancoDeDados banco = new BancoDeDados();
+       
        
        int verificador = 0;
-       for(int i = 0; i < banco.produtos.size(); i++){
-           if(codigo == banco.produtos.get(i).getCodigo()){
+       for(int i = 0; i < bancoDeDados.produtos.size(); i++){
+           if(codigo == bancoDeDados.produtos.get(i).getCodigo()){
                verificador=1;
            }
        }
        if(verificador == 0){
-           banco.addProduto(prod);
+           bancoDeDados.addProduto(prod);
            
        }
        if(verificador == 1){
-         
+           JOptionPane.showMessageDialog(null, "Produto já cadastrado! \n");
        }
         
        
@@ -185,12 +190,14 @@ public class CadastroProduto extends javax.swing.JFrame {
        
         System.out.println("tudo feito");
         
-         for(int i = 0; i < banco.produtos.size(); i++){
-            System.out.println("preco " + banco.produtos.get(i).getPreco());
+         for(int i = 0; i < bancoDeDados.produtos.size(); i++){
+            System.out.println("preco " + bancoDeDados.produtos.get(i).getPreco());
         }
          dispose();
         
-         ProdutosFuncionarios pro = new ProdutosFuncionarios();
+         
+         
+         ProdutosFuncionarios pro = new ProdutosFuncionarios(bancoDeDados);
          pro.setVisible(true);
          
         
@@ -234,7 +241,7 @@ public class CadastroProduto extends javax.swing.JFrame {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadastroProduto().setVisible(true);
+                new CadastroProduto(bancoDeDados).setVisible(true);
             }
         });
         

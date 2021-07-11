@@ -5,17 +5,23 @@
  */
 package frontend.telas;
 
+import backend.BancoDeDados;
+
 /**
  *
  * @author jonny
  */
 public class ProdutosFuncionarios extends javax.swing.JFrame {
 
+      static BancoDeDados bancoDeDados;
+        
     /**
      * Creates new form ProdutosFuncionarios
      */
-    public ProdutosFuncionarios() {
+    public ProdutosFuncionarios(BancoDeDados banco) {
         initComponents();
+        
+        this.bancoDeDados = banco;
     }
 
     /**
@@ -53,13 +59,13 @@ public class ProdutosFuncionarios extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(154, 154, 154)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(137, 137, 137)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton1)
-                            .addComponent(jLabel1))))
+                            .addComponent(jLabel1)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(154, 154, 154)
+                        .addComponent(jLabel2)))
                 .addContainerGap(146, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -80,11 +86,13 @@ public class ProdutosFuncionarios extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
+        CadastroProduto cad = new CadastroProduto(bancoDeDados);
         dispose();
-        CadastroProduto cad = new CadastroProduto();
         cad.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    
+  
     /**
      * @param args the command line arguments
      */
@@ -111,11 +119,12 @@ public class ProdutosFuncionarios extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ProdutosFuncionarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ProdutosFuncionarios().setVisible(true);
+                new ProdutosFuncionarios(bancoDeDados).setVisible(true);
             }
         });
     }

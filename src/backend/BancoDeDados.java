@@ -37,18 +37,7 @@ public class BancoDeDados {
     public void addProduto(Produto produto){
         produtos.add(produto);
         
-        try{
-               FileOutputStream arq = new FileOutputStream("C:\\Users\\Tony\\Desktop\\Banco de dados\\produtos.txt");
-               ObjectOutputStream obj = new ObjectOutputStream(arq);
-               obj.writeObject(produto);
-               obj.flush();
-               JOptionPane.showMessageDialog(null, "Ocorreu tudo bem na gravação do arquivo! \n");
-           }
-           catch(HeadlessException | IOException erro)
-           {
-               JOptionPane.showMessageDialog(null, "Ocorreu um erro na gravação do arquivo! \n"+erro.getMessage());
-           }
-        
+    
     }
     
     public void deleteProduto( int codigo){
@@ -62,76 +51,20 @@ public class BancoDeDados {
     public void addCliente(Cliente cliente){
         clientes.add(cliente);
         
-        try{
-            FileOutputStream arquivoGrav = new FileOutputStream("C:\\Users\\Tony\\Desktop\\Banco de dados\\cliente.txt");
-            ObjectOutputStream objGravar = new ObjectOutputStream(arquivoGrav);
-            objGravar.writeObject(cliente);
-            objGravar.flush();
-            objGravar.close();
-            arquivoGrav.flush();
-            arquivoGrav.close();
-            JOptionPane.showMessageDialog(null, "Ocorreu tudo bem na gravação do arquivo! \n");
-        }
-        catch(HeadlessException | IOException erro){
-            JOptionPane.showMessageDialog(null, "Ocorreu um erro na gravação do arquivo! \n"+erro.getMessage());
-        }
-        
     }
     
     public void addVendedor(Vendedor vendedor){
         vendedores.add(vendedor);
-        
-        try{
-            FileOutputStream arquivoGrav = new FileOutputStream("C:\\Users\\Tony\\Desktop\\Banco de dados\\vendedor.txt");
-            ObjectOutputStream objGravar = new ObjectOutputStream(arquivoGrav);
-            objGravar.writeObject(vendedor);
-            objGravar.flush();
-            objGravar.close();
-            arquivoGrav.flush();
-            arquivoGrav.close();
-            JOptionPane.showMessageDialog(null, "Ocorreu tudo bem na gravação do arquivo! \n");
-        }
-        catch(HeadlessException | IOException erro){
-            JOptionPane.showMessageDialog(null, "Ocorreu um erro na gravação do arquivo! \n"+erro.getMessage());
-        }
-        
+       
     }
     
     public void addGerente(Gerente gerente){
         gerentes.add(gerente);
         
-        try{
-            FileOutputStream arquivoGrav = new FileOutputStream("C:\\Users\\Tony\\Desktop\\Banco de dados\\gerente.txt");
-            ObjectOutputStream objGravar = new ObjectOutputStream(arquivoGrav);
-            objGravar.writeObject(gerente);
-            objGravar.flush();
-            objGravar.close();
-            arquivoGrav.flush();
-            arquivoGrav.close();
-            JOptionPane.showMessageDialog(null, "Ocorreu tudo bem na gravação do arquivo! \n");
-        }
-        catch(HeadlessException | IOException erro){
-            JOptionPane.showMessageDialog(null, "Ocorreu um erro na gravação do arquivo! \n"+erro.getMessage());
-        }
-        
     }
     
     public void addDono(Dono dono){
         donos.add(dono);
-        
-        try{
-            FileOutputStream arquivoGrav = new FileOutputStream("C:\\Users\\Tony\\Desktop\\Banco de dados\\dono.txt");
-            ObjectOutputStream objGravar = new ObjectOutputStream(arquivoGrav);
-            objGravar.writeObject(dono);
-            objGravar.flush();
-            objGravar.close();
-            arquivoGrav.flush();
-            arquivoGrav.close();
-            JOptionPane.showMessageDialog(null, "Ocorreu tudo bem na gravação do arquivo! \n");
-        }
-        catch(HeadlessException | IOException erro){
-            JOptionPane.showMessageDialog(null, "Ocorreu um erro na gravação do arquivo! \n"+erro.getMessage());
-        }
         
     }
     

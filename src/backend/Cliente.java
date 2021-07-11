@@ -13,19 +13,10 @@ import java.io.Serializable;
  */
 public class Cliente extends Pessoa implements Serializable{
     
-    double saldoCompras;
+   
 
-    public double getSaldoCompras() {
-        return saldoCompras;
-    }
-
-    public void setSaldoCompras(double saldoCompras) {
-        this.saldoCompras = saldoCompras;
-    }
-
-    public Cliente(double saldoCompras, String Nome, String CPF, int Idade) {
+    public Cliente(String Nome, String CPF, int Idade) {
         super(Nome, CPF, Idade);
-        this.saldoCompras = saldoCompras;
     }
     
     
