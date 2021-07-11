@@ -36,8 +36,6 @@ public class BancoDeDados {
     
     public void addProduto(Produto produto){
         produtos.add(produto);
-        
-    
     }
     
     public void deleteProduto( int codigo){

@@ -13,12 +13,10 @@ import java.io.Serializable;
  */
 public class Cliente extends Pessoa implements Serializable{
     
-   
-
-    public Cliente(String Nome, String CPF, int Idade) {
-        super(Nome, CPF, Idade);
+    public Cliente(String nome, String cpf, int idade) {
+        super(nome, cpf, idade);
     }
     
-    
-    
+           
+
 }

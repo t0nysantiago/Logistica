@@ -126,7 +126,7 @@ public class IdentificacaoCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
         
-        CadastroCliente cadCli = new CadastroCliente();
+        CadastroCliente cadCli = new CadastroCliente(bancoDeDados);
 
         cadCli.setVisible(true);
     }//GEN-LAST:event_naoTenhoCadastroActionPerformed

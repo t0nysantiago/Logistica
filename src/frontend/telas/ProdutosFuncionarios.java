@@ -86,9 +86,9 @@ public class ProdutosFuncionarios extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
-        CadastroProduto cad = new CadastroProduto(bancoDeDados);
+      //  CadastroProduto cad = new CadastroProduto(bancoDeDados);
         dispose();
-        cad.setVisible(true);
+       // cad.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     

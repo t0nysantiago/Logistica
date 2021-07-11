@@ -51,6 +51,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         cadastrar = new javax.swing.JButton();
         voltar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -95,6 +96,13 @@ public class CadastroCliente extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -103,7 +111,9 @@ public class CadastroCliente extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(119, 119, 119)
+                            .addGap(27, 27, 27)
+                            .addComponent(cadastrar)
+                            .addGap(11, 11, 11)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,7 +128,7 @@ public class CadastroCliente extends javax.swing.JFrame {
                                                 .addComponent(cpfCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addComponent(cadastrar)
+                                            .addComponent(jButton1)
                                             .addGap(55, 55, 55)))
                                     .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jLabel5)))
@@ -161,7 +171,9 @@ public class CadastroCliente extends javax.swing.JFrame {
                 .addGap(18, 26, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cadastrar)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cadastrar)
+                        .addComponent(jButton1))))
         );
 
         pack();
@@ -175,7 +187,7 @@ public class CadastroCliente extends javax.swing.JFrame {
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
         // TODO add your handling code here:
         
-        int idade = Integer.parseInt(idadeCliente.getText());
+        int idade = Integer.parseInt(idadeCliente.getText().trim());
        
         Cliente cliente = new Cliente(nomeCliente.getText(), cpfCliente.getText(), idade);
         
@@ -191,6 +203,9 @@ public class CadastroCliente extends javax.swing.JFrame {
         
        if(verificador == 0){
            bancoDeDados.addCliente(cliente);
+                      JOptionPane.showMessageDialog(null, "Usuario cadastrado! \n");
+
+           
        }
         
        if(verificador == 1){
@@ -213,6 +228,10 @@ public class CadastroCliente extends javax.swing.JFrame {
          IdentificacaoCliente idcli = new IdentificacaoCliente(bancoDeDados);
         idcli.setVisible(true);
     }//GEN-LAST:event_voltarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -254,6 +273,7 @@ public class CadastroCliente extends javax.swing.JFrame {
     private javax.swing.JTextField cpfCliente;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JTextField idadeCliente;
+    private javax.swing.JButton jButton1;
     private javax.swing.JColorChooser jColorChooser1;
     private javax.swing.JColorChooser jColorChooser2;
     private javax.swing.JLabel jLabel1;

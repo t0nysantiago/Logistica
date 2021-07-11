@@ -52,7 +52,5 @@ public class Produto implements Serializable{
         this.quantEstoque = quantEstoque;
     }
     
-    
-    
-    
+   
 }

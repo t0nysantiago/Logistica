@@ -9,38 +9,38 @@ import java.util.InputMismatchException;
 
 public class Pessoa {
     
-    private String Nome;
-    private String CPF;
-    private int Idade;
+    private String nome;
+    private String cpf;
+    private int idade;
 
-    public Pessoa(String Nome, String CPF, int Idade) {
-        this.Nome = Nome;
-        this.CPF = CPF;
-        this.Idade = Idade;
+    public Pessoa(String nome, String cpf, int idade) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.idade = idade;
     }
     
     public String getNome() {
-        return Nome;
+        return nome;
     }
 
-    public void setNome(String Nome) {
-        this.Nome = Nome;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getCPF() {
-        return CPF;
+        return cpf;
     }
 
-    public void setCPF(String CPF) {
-        this.CPF = CPF;
+    public void setCPF(String cpf) {
+        this.cpf = cpf;
     }
 
     public int getIdade() {
-        return Idade;
+        return idade;
     }
 
-    public void setIdade(int Idade) {
-        this.Idade = Idade;
+    public void setIdade(int idade) {
+        this.idade = idade;
     }
     
 }
