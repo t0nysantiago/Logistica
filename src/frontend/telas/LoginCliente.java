@@ -6,6 +6,7 @@
 package frontend.telas;
 
 import backend.BancoDeDados;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -36,7 +37,7 @@ public class LoginCliente extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        loginCliente = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -51,7 +52,12 @@ public class LoginCliente extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Cliente");
 
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        loginCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        loginCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginClienteActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("CPF");
 
@@ -84,7 +90,7 @@ public class LoginCliente extends javax.swing.JFrame {
                         .addGap(112, 112, 112)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(loginCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(171, 171, 171)
                         .addComponent(jLabel2))
@@ -105,7 +111,7 @@ public class LoginCliente extends javax.swing.JFrame {
                 .addGap(64, 64, 64)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(loginCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addContainerGap(87, Short.MAX_VALUE))
@@ -125,8 +131,29 @@ public class LoginCliente extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
+        int verificador = 0;
+        for(int i = 0; i < bancoDeDados.clientes.size(); i++){
+             if(loginCliente.getText().equals(bancoDeDados.clientes.get(i).getCPF())){
+                verificador = 1;
+             }
+        }
+        
+        if(verificador == 1){
+            dispose();
+            ProdutosCliente prodCli = new ProdutosCliente(bancoDeDados);
+            
+            prodCli.setVisible(true);
+        }
+       
+        if(verificador == 0){
+             JOptionPane.showMessageDialog(null, "Usuario não cadastrado! \n");
+        }
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void loginClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_loginClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,6 +197,6 @@ public class LoginCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField loginCliente;
     // End of variables declaration//GEN-END:variables
 }

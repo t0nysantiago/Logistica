@@ -4,7 +4,7 @@ package backend;
  *
  * @author Tony
  */
-public abstract class Funcionario extends Pessoa{
+public  class Funcionario extends Pessoa{
 
     double salario;
 

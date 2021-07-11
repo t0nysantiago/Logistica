@@ -37,10 +37,9 @@ public class TelaFuncionario extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        naoTenhoCadastro = new javax.swing.JButton();
+        tenhoCadastro = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,16 +49,25 @@ public class TelaFuncionario extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Funcionario");
 
-        jButton1.setText("Dono");
-
-        jButton2.setText("Gerente");
-
-        jButton3.setText("Vendedor");
-
         jButton4.setText("Voltar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
+            }
+        });
+
+        naoTenhoCadastro.setText("Não tenho Cadastro");
+        naoTenhoCadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                naoTenhoCadastroActionPerformed(evt);
+            }
+        });
+
+        tenhoCadastro.setBackground(new java.awt.Color(204, 204, 204));
+        tenhoCadastro.setText("Tenho Cadastro");
+        tenhoCadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tenhoCadastroActionPerformed(evt);
             }
         });
 
@@ -70,36 +78,35 @@ public class TelaFuncionario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(143, 143, 143)
+                        .addGap(34, 34, 34)
+                        .addComponent(jButton4)
+                        .addGap(48, 48, 48)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(160, 160, 160)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(9, 9, 9)
-                                .addComponent(jButton4)))))
+                        .addComponent(jLabel2)))
                 .addContainerGap(145, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(tenhoCadastro)
+                .addGap(54, 54, 54)
+                .addComponent(naoTenhoCadastro)
+                .addGap(46, 46, 46))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jButton4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addGap(18, 18, 18)
-                .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                .addComponent(jButton4)
-                .addContainerGap())
+                .addGap(91, 91, 91)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tenhoCadastro)
+                    .addComponent(naoTenhoCadastro))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
 
         pack();
@@ -113,6 +120,23 @@ public class TelaFuncionario extends javax.swing.JFrame {
         dispose();
         telaIni.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void naoTenhoCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_naoTenhoCadastroActionPerformed
+        // TODO add your handling code here:
+        dispose();
+
+        CadastroFuncionario cadFun = new CadastroFuncionario(bancoDeDados);
+
+        cadFun.setVisible(true);
+    }//GEN-LAST:event_naoTenhoCadastroActionPerformed
+
+    private void tenhoCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tenhoCadastroActionPerformed
+        // TODO add your handling code here:
+        dispose();
+
+        loginFuncionario logfun = new loginFuncionario(bancoDeDados);
+        logfun.setVisible(true);
+    }//GEN-LAST:event_tenhoCadastroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,11 +174,10 @@ public class TelaFuncionario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton naoTenhoCadastro;
+    private javax.swing.JButton tenhoCadastro;
     // End of variables declaration//GEN-END:variables
 }

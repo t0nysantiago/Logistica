@@ -26,13 +26,7 @@ public class BancoDeDados {
    
    public List<Produto> produtos = new ArrayList<>();
    public List<Cliente> clientes = new ArrayList<>();
-   public List<Vendedor> vendedores = new ArrayList<>();
-   public List<Gerente> gerentes = new ArrayList<>();
-   public List<Dono> donos = new ArrayList<>();
-   
-//    List<Produto> produtos = new ArrayList<>();
-    
-    
+   public List<Funcionario> funcionario = new ArrayList<>();
     
     public void addProduto(Produto produto){
         produtos.add(produto);
@@ -50,20 +44,9 @@ public class BancoDeDados {
         clientes.add(cliente);
         
     }
-    
-    public void addVendedor(Vendedor vendedor){
-        vendedores.add(vendedor);
-       
-    }
-    
-    public void addGerente(Gerente gerente){
-        gerentes.add(gerente);
-        
-    }
-    
-    public void addDono(Dono dono){
-        donos.add(dono);
-        
+   
+    public void addFuncionario(Funcionario funcionario){
+        this.funcionario.add(funcionario);
     }
     
     public void listaProdCadastrados(){
@@ -78,46 +61,46 @@ public class BancoDeDados {
     
 }
     
-    public void fazVenda(){
-        
-        Scanner entrada = new Scanner(System.in);
-        
-        int codVendDigitado;
-        int codProdDigitado;
-        int quantProdDigitado;
-        int auxQuant = 0;
-        
-        codVendDigitado = entrada.nextInt();
-        codProdDigitado = entrada.nextInt();
-        
-        for(int i = 0; i < vendedores.size(); i++){
-            if(vendedores.get(i).getCodigoIdent() == codVendDigitado){
-                
-            for(int j = 0; j < produtos.size(); j++){    
-                if(produtos.get(j).getCodigo() == codProdDigitado){
-                    
-                    quantProdDigitado = entrada.nextInt();
-                    
-                    auxQuant = produtos.get(j).getQuantEstoque();
-                    
-                    if(quantProdDigitado > auxQuant){
-                        JOptionPane.showMessageDialog(null, "Produto nao tem estoque suficiente! \n");
-                    }else{
-                        produtos.get(j).setQuantEstoque(auxQuant - quantProdDigitado);
-                        vendedores.get(i).setValorVendas(quantProdDigitado * produtos.get(j).getPreco());
-                    }
-                    
-                    
-                }else{
-                    JOptionPane.showMessageDialog(null, "Produto nao encontrado! \n");
-                }
-                
-            }}else{
-                JOptionPane.showMessageDialog(null, "Vendedor nao encontrado! \n");
-            }
-            }
-        
-}
+//    public void fazVenda(){
+//        
+//        Scanner entrada = new Scanner(System.in);
+//        
+//        int codVendDigitado;
+//        int codProdDigitado;
+//        int quantProdDigitado;
+//        int auxQuant = 0;
+//        
+//        codVendDigitado = entrada.nextInt();
+//        codProdDigitado = entrada.nextInt();
+//        
+//        for(int i = 0; i < vendedores.size(); i++){
+//            if(vendedores.get(i).getCodigoIdent() == codVendDigitado){
+//                
+//            for(int j = 0; j < produtos.size(); j++){    
+//                if(produtos.get(j).getCodigo() == codProdDigitado){
+//                    
+//                    quantProdDigitado = entrada.nextInt();
+//                    
+//                    auxQuant = produtos.get(j).getQuantEstoque();
+//                    
+//                    if(quantProdDigitado > auxQuant){
+//                        JOptionPane.showMessageDialog(null, "Produto nao tem estoque suficiente! \n");
+//                    }else{
+//                        produtos.get(j).setQuantEstoque(auxQuant - quantProdDigitado);
+//                        vendedores.get(i).setValorVendas(quantProdDigitado * produtos.get(j).getPreco());
+//                    }
+//                    
+//                    
+//                }else{
+//                    JOptionPane.showMessageDialog(null, "Produto nao encontrado! \n");
+//                }
+//                
+//            }}else{
+//                JOptionPane.showMessageDialog(null, "Vendedor nao encontrado! \n");
+//            }
+//            }
+//        
+//}
     public void listaProdDispEstoque(){
         
         for(int i = 0; i < produtos.size(); i++){
