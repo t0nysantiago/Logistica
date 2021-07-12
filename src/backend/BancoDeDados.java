@@ -27,7 +27,23 @@ public class BancoDeDados {
    public List<Produto> produtos = new ArrayList<>();
    public List<Cliente> clientes = new ArrayList<>();
    public List<Funcionario> funcionario = new ArrayList<>();
+   public List<Vendas> vendas = new ArrayList<>();
+   public List<Carrinho> carrinho = new ArrayList<>();
     
+    public void addCarinho(Carrinho carrinho){
+        produtos.add(carrinho);
+    }
+    
+    public void resetCarrinho(Carrinho carrinho1){
+        for(int i = 0; i <  carrinho.size(); i++){
+            carrinho.remove(i);
+        }
+    }
+    
+    public void addVendas(Vendas vendas){
+        produtos.add(vendas);
+    }
+   
     public void addProduto(Produto produto){
         produtos.add(produto);
     }
@@ -49,58 +65,7 @@ public class BancoDeDados {
         this.funcionario.add(funcionario);
     }
     
-    public void listaProdCadastrados(){
-        
-        for(int i = 0; i < produtos.size(); i++){
-            
-            JOptionPane.showMessageDialog(null, "Nome: " + produtos.get(i).getNome() + "\nCodigo: " +
-                               produtos.get(i).getCodigo() + "\nPreco: " + produtos.get(i).getPreco() + "\nQuantidade em estoque: " +
-                               produtos.get(i).getQuantEstoque());
-            
-    }
     
-}
-    
-//    public void fazVenda(){
-//        
-//        Scanner entrada = new Scanner(System.in);
-//        
-//        int codVendDigitado;
-//        int codProdDigitado;
-//        int quantProdDigitado;
-//        int auxQuant = 0;
-//        
-//        codVendDigitado = entrada.nextInt();
-//        codProdDigitado = entrada.nextInt();
-//        
-//        for(int i = 0; i < vendedores.size(); i++){
-//            if(vendedores.get(i).getCodigoIdent() == codVendDigitado){
-//                
-//            for(int j = 0; j < produtos.size(); j++){    
-//                if(produtos.get(j).getCodigo() == codProdDigitado){
-//                    
-//                    quantProdDigitado = entrada.nextInt();
-//                    
-//                    auxQuant = produtos.get(j).getQuantEstoque();
-//                    
-//                    if(quantProdDigitado > auxQuant){
-//                        JOptionPane.showMessageDialog(null, "Produto nao tem estoque suficiente! \n");
-//                    }else{
-//                        produtos.get(j).setQuantEstoque(auxQuant - quantProdDigitado);
-//                        vendedores.get(i).setValorVendas(quantProdDigitado * produtos.get(j).getPreco());
-//                    }
-//                    
-//                    
-//                }else{
-//                    JOptionPane.showMessageDialog(null, "Produto nao encontrado! \n");
-//                }
-//                
-//            }}else{
-//                JOptionPane.showMessageDialog(null, "Vendedor nao encontrado! \n");
-//            }
-//            }
-//        
-//}
     public void listaProdDispEstoque(){
         
         for(int i = 0; i < produtos.size(); i++){
