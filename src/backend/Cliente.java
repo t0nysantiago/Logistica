@@ -13,8 +13,19 @@ import java.io.Serializable;
  */
 public class Cliente extends Pessoa implements Serializable{
     
-    public Cliente(String nome, String cpf, int idade) {
+    double compras;
+    
+    public Cliente(double compras, String nome, String cpf, int idade) {
         super(nome, cpf, idade);
+        this.compras = compras;
+    }
+
+    public double getCompras() {
+        return compras;
+    }
+
+    public void setCompras(double compras) {
+        this.compras = compras;
     }
     
            

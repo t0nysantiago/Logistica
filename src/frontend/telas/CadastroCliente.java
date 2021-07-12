@@ -176,8 +176,9 @@ public class CadastroCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         int idade = Integer.parseInt(idadeCliente.getText().trim());
+        int compras = 0;
        
-        Cliente cliente = new Cliente(nomeCliente.getText(), cpfCliente.getText(), idade);
+        Cliente cliente = new Cliente(compras, nomeCliente.getText(), cpfCliente.getText(), idade);
         
         
         

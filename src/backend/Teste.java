@@ -23,8 +23,8 @@ public class Teste {
         
         BancoDeDados banco = new BancoDeDados();
         
-        Produto p1 = new Produto(2.4, "ggf", 112, 4);
-        Produto p2 = new Produto(3.8, "ovo", 113, 5);
+        Produto p1 = new Produto("Rifle",2.4, "ggf", 112, 4);
+        Produto p2 = new Produto("Pesada",3.8, "ovo", 113, 5);
         
       
         banco.addProduto(p1);

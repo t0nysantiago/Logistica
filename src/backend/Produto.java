@@ -12,12 +12,14 @@ public class Produto implements Serializable{
     private String nome;
     private int codigo;
     private int quantEstoque;
+    private String categoria;
 
-    public Produto(double preco, String nome, int codigo, int quantEstoque) {
+    public Produto(String categoria, double preco, String nome, int codigo, int quantEstoque) {
         this.preco = preco;
         this.nome = nome;
         this.codigo = codigo;
         this.quantEstoque = quantEstoque;
+        this.categoria = categoria;
     }
     
     public double getPreco() {
@@ -50,6 +52,14 @@ public class Produto implements Serializable{
 
     public void setQuantEstoque(int quantEstoque) {
         this.quantEstoque = quantEstoque;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
     
    
