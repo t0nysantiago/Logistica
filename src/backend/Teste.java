@@ -42,7 +42,6 @@ public class Teste {
         
         banco.aumentaEstoque();
         
-        banco.listaProdCadastrados();
         
         //Vendedor vend = new Vendedor(1003, 0506, 20000, "kaio", "000000008", 29);
         
