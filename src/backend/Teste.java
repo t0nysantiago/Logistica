@@ -30,6 +30,12 @@ public class Teste {
         banco.addProduto(p1);
         banco.addProduto(p2);
         
+        Carrinho carrinho = new Carrinho("Rifle",2.4, "ggf", 112, 4);
+        
+        banco.addCarinho(carrinho);
+        
+        System.out.println("preco carrinho: " + banco.carrinho.get(0).getPreco());
+        
         //Cliente c1 = new Cliente(2000, "Tony", "000000001", 20);
       
         //banco.addCliente(c1);
@@ -40,7 +46,7 @@ public class Teste {
         
         //Gerente ger = new Gerente(1030, "Jobson", "00000000001", 56);
         
-        banco.aumentaEstoque();
+       // banco.aumentaEstoque();
         
         
         //Vendedor vend = new Vendedor(1003, 0506, 20000, "kaio", "000000008", 29);

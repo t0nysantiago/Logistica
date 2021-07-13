@@ -295,18 +295,13 @@ public class ProdutosCliente extends javax.swing.JFrame {
             
             if(codSelecionado == bancoDeDados.produtos.get(i).getCodigo()){
                 
-                Carrinho carrinho = new Carrinho(bancoDeDados.produtos.get(i).getCategoria(), 
-                        bancoDeDados.produtos.get(i).getPreco(), bancoDeDados.produtos.get(i).getNome(), 
-                        bancoDeDados.produtos.get(i).getCodigo(), quantSelecionada);
-                
-               
-                
                 compras = (bancoDeDados.produtos.get(i).getPreco() * quantSelecionada) + compras;
                 
                 bancoDeDados.clientes.get(j).setCompras(compras);
                 
-                  bancoDeDados.addCarinho(carrinho);
-               
+                 
+               Carrinho carrinho = new Carrinho(bancoDeDados.produtos.get(i).getCategoria(),bancoDeDados.produtos.get(i).getPreco(),bancoDeDados.produtos.get(i).getNome(), bancoDeDados.produtos.get(i).getCodigo(), quantSelecionada);
+                bancoDeDados.addCarinho(carrinho);
             }
         }
         
@@ -329,16 +324,17 @@ public class ProdutosCliente extends javax.swing.JFrame {
             bancoDeDados.produtos.get(i).setQuantEstoque(bancoDeDados.produtos.get(i).getQuantEstoque() - bancoDeDados.carrinho.get(i).getQuantEstoque());
         }
         
-        
+        double verifica = 0;
         
         for(int i = 0; i < bancoDeDados.clientes.size();i++){
             if(bancoDeDados.clientes.get(i).getCPF().equals(txtCPF.getText())){
                 bancoDeDados.clientes.get(i).setCompras(0);
+                verifica = bancoDeDados.clientes.get(i).getCompras();
             }
         }
         
         
-        JOptionPane.showMessageDialog(null, "Compra finalizada!");
+        JOptionPane.showMessageDialog(null, "Compra finalizada! " + verifica);
            
     }//GEN-LAST:event_jButton2ActionPerformed
 

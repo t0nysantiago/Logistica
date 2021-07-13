@@ -29,9 +29,11 @@ public class BancoDeDados {
    public List<Funcionario> funcionario = new ArrayList<>();
    public List<Vendas> vendas = new ArrayList<>();
    public List<Carrinho> carrinho = new ArrayList<>();
-    
+   
+   
+   
     public void addCarinho(Carrinho carrinho){
-        produtos.add(carrinho);
+        this.carrinho.add(carrinho);
     }
     
     public void resetCarrinho(Carrinho carrinho1){
@@ -41,7 +43,7 @@ public class BancoDeDados {
     }
     
     public void addVendas(Vendas vendas){
-        produtos.add(vendas);
+        this.vendas.add(vendas);
     }
    
     public void addProduto(Produto produto){
