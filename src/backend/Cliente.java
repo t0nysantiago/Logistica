@@ -13,7 +13,7 @@ import java.io.Serializable;
  */
 public class Cliente extends Pessoa implements Serializable{
     
-    double compras;
+    private double compras;
     
     public Cliente(double compras, String nome, String cpf, int idade) {
         super(nome, cpf, idade);

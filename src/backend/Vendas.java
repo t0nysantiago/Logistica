@@ -9,10 +9,12 @@ package backend;
  *
  * @author jonny
  */
-public class Vendas extends Produto {
+public class Vendas extends Carrinho {
     
-    public Vendas(String categoria, double preco, String nome, int codigo, int quantEstoque) {
-        super(categoria, preco, nome, codigo, quantEstoque);
+    public Vendas(String categoria, double preco, String nome, int codigo, int quantEstoque, String nomeCliente, String codIdentificacao) {
+        super(categoria, preco, nome, codigo, quantEstoque, nomeCliente, codIdentificacao);
     }
+    
+   
     
 }

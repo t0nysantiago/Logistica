@@ -30,11 +30,11 @@ public class Teste {
         banco.addProduto(p1);
         banco.addProduto(p2);
         
-        Carrinho carrinho = new Carrinho("Rifle",2.4, "ggf", 112, 4);
+      //  Carrinho carrinho = new Carrinho("Rifle",2.4, "ggf", 112, 4);
         
-        banco.addCarinho(carrinho);
+      //  banco.addCarinho(carrinho);
         
-        System.out.println("preco carrinho: " + banco.carrinho.get(0).getPreco());
+      //  System.out.println("preco carrinho: " + banco.carrinho.get(0).getPreco());
         
         //Cliente c1 = new Cliente(2000, "Tony", "000000001", 20);
       

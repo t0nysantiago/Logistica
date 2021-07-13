@@ -61,6 +61,7 @@ public class ProdutosCliente extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtCatSelecionada1 = new javax.swing.JTextArea();
+        jButton3 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -144,21 +145,30 @@ public class ProdutosCliente extends javax.swing.JFrame {
         txtCatSelecionada1.setRows(5);
         jScrollPane2.setViewportView(txtCatSelecionada1);
 
+        jButton3.setText("Vendas já efetuadas");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
+                .addContainerGap(43, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(173, 173, 173)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(57, 57, 57))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton1)
                                 .addGap(23, 23, 23))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -169,7 +179,7 @@ public class ProdutosCliente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(266, 266, 266)
                 .addComponent(jLabel2)
-                .addContainerGap(289, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -203,20 +213,21 @@ public class ProdutosCliente extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel3)
-                    .addComponent(jButton1))
+                    .addComponent(jButton1)
+                    .addComponent(jButton3))
                 .addGap(1, 1, 1)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSelecionaCod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -299,18 +310,32 @@ public class ProdutosCliente extends javax.swing.JFrame {
                 bancoDeDados.clientes.get(j).setCompras(compras);
                 
                  
-               Carrinho carrinho = new Carrinho(bancoDeDados.produtos.get(i).getCategoria(),bancoDeDados.produtos.get(i).getPreco(),bancoDeDados.produtos.get(i).getNome(), bancoDeDados.produtos.get(i).getCodigo(), quantSelecionada);
+               Carrinho carrinho = new Carrinho(bancoDeDados.produtos.get(i).getCategoria(),
+                       bancoDeDados.produtos.get(i).getPreco() * quantSelecionada,
+                       bancoDeDados.produtos.get(i).getNome(), bancoDeDados.produtos.get(i).getCodigo(), quantSelecionada, 
+                       bancoDeDados.clientes.get(j).getNome(), bancoDeDados.clientes.get(j).getCodigoIdentificacao());
                bancoDeDados.addCarinho(carrinho);
-               txtCarrinho.append("CATEGORIA: " + bancoDeDados.produtos.get(i).getCategoria() + "\n" +
-                    "Nome: " + bancoDeDados.produtos.get(i).getNome() + " | Codigo: " + bancoDeDados.produtos.get(i).getCodigo() + " | Quantidade: " 
-                    + quantSelecionada + " | Preco: " + bancoDeDados.produtos.get(i).getPreco() + " R$" + " | Total: " + compras + "\n"
-                    + "-------------------------------------------------------------------------------------------------------------------------------" + "\n");
+               
+            txtCarrinho.setText("");
+               
+            String impCarrinho;
+            for(int u = 0; u < bancoDeDados.carrinho.size(); u++){
+                
+            impCarrinho = "CATEGORIA: " + bancoDeDados.carrinho.get(u).getCategoria() + "\n" +
+                    "Nome: " + bancoDeDados.carrinho.get(u).getNome() + " | Codigo: " + bancoDeDados.produtos.get(u).getCodigo() + " | Quantidade: " 
+                    + quantSelecionada + " | Preco: " + bancoDeDados.carrinho.get(u).getPreco() + " R$" + " | Total: " + compras + "\n"
+                    + "-------------------------------------------------------------------------------------------------------------------------------" + "\n";
+            txtCarrinho.append(impCarrinho);
+            }
+               
+               
             }
         }
         
         resultado = compras;
         }
         }
+       
         System.out.println(resultado);
         
     }//GEN-LAST:event_txtEscolheProdActionPerformed
@@ -318,24 +343,34 @@ public class ProdutosCliente extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         
-        for(int i = 0; i < bancoDeDados.carrinho.size(); i++){
-            Vendas venda = new Vendas(bancoDeDados.carrinho.get(i).getCategoria(), 
-                        bancoDeDados.carrinho.get(i).getPreco(), bancoDeDados.carrinho.get(i).getNome(), 
-                        bancoDeDados.carrinho.get(i).getCodigo(), bancoDeDados.carrinho.get(i).getQuantEstoque());
-            bancoDeDados.addVendas(venda);
-            
-            bancoDeDados.produtos.get(i).setQuantEstoque(bancoDeDados.produtos.get(i).getQuantEstoque() - bancoDeDados.carrinho.get(i).getQuantEstoque());
-        }
         
+        
+         
         double verifica = 0;
         
         for(int i = 0; i < bancoDeDados.clientes.size();i++){
             if(bancoDeDados.clientes.get(i).getCodigoIdentificacao().equals(txtcodigoIdentificacao.getText())){
+                for(int j = 0; j < bancoDeDados.carrinho.size(); j++){
+            Vendas venda = new Vendas(bancoDeDados.carrinho.get(j).getCategoria(), 
+                        bancoDeDados.carrinho.get(j).getPreco(), bancoDeDados.carrinho.get(j).getNome(), 
+                        bancoDeDados.carrinho.get(j).getCodigo(), bancoDeDados.carrinho.get(j).getQuantEstoque(), 
+                       bancoDeDados.clientes.get(i).getNome(), bancoDeDados.clientes.get(i).getCodigoIdentificacao());
+            bancoDeDados.addVendas(venda);
+            bancoDeDados.produtos.get(i).setQuantEstoque(bancoDeDados.produtos.get(i).getQuantEstoque() - bancoDeDados.carrinho.get(i).getQuantEstoque());
+        }
                 bancoDeDados.clientes.get(i).setCompras(0);
                 verifica = bancoDeDados.clientes.get(i).getCompras();
             }
         }
         
+        for(int i = 0; i < bancoDeDados.carrinho.size(); i++){
+             bancoDeDados.carrinho.remove(i);
+        }
+        
+        
+        if(bancoDeDados.carrinho.isEmpty()){
+            System.out.println("tudo feito");
+        }
         
         JOptionPane.showMessageDialog(null, "Compra finalizada! " + verifica);
         
@@ -345,6 +380,16 @@ public class ProdutosCliente extends javax.swing.JFrame {
         txtcodigoIdentificacao.setText("");
         
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        
+        dispose();
+        VendasClientes vendasCli = new VendasClientes(bancoDeDados);
+        
+        vendasCli.setVisible(true);
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -392,6 +437,7 @@ public class ProdutosCliente extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbCategorias;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JFrame jFrame2;
     private javax.swing.JLabel jLabel1;

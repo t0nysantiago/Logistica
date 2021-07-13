@@ -36,7 +36,7 @@ public class BancoDeDados {
         this.carrinho.add(carrinho);
     }
     
-    public void resetCarrinho(Carrinho carrinho1){
+    public void resetCarrinho(){
         for(int i = 0; i <  carrinho.size(); i++){
             carrinho.remove(i);
         }
