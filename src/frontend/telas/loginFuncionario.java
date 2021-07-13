@@ -66,7 +66,7 @@ public class loginFuncionario extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("CPF");
+        jLabel3.setText("Codigo Identificacao");
 
         jButton1.setText("Entrar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -99,13 +99,12 @@ public class loginFuncionario extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(25, 25, 25)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton1)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(loginFunc, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
                                 .addComponent(codEmpresa)))))
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,7 +150,7 @@ public class loginFuncionario extends javax.swing.JFrame {
 
         int verificador = 0;
         for(int i = 0; i < bancoDeDados.funcionario.size(); i++){
-            if(loginFunc.getText().equals(bancoDeDados.funcionario.get(i).getCPF())){
+            if(loginFunc.getText().equals(bancoDeDados.funcionario.get(i).getCodigoIdentificacao())){
                 verificador = 1;
             }
         }

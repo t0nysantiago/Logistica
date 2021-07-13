@@ -47,7 +47,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         idadeCliente = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        cpfCliente = new javax.swing.JTextField();
+        codCliente = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         cadastrar = new javax.swing.JButton();
         voltar = new javax.swing.JButton();
@@ -76,7 +76,7 @@ public class CadastroCliente extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setText("CPF");
+        jLabel5.setText("Codigo Identificacao");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText("Faça o cadastro");
@@ -104,24 +104,23 @@ public class CadastroCliente extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(119, 119, 119)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jLabel3)
-                                                .addComponent(jLabel4))
-                                            .addGap(29, 29, 29)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(nomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(idadeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(cpfCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addComponent(cadastrar)
-                                            .addGap(51, 51, 51)))
+                                    .addComponent(cadastrar)
+                                    .addGap(51, 51, 51)
                                     .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jLabel5)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel5)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(codCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jLabel4))
+                                    .addGap(88, 88, 88)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(idadeCliente)
+                                        .addComponent(nomeCliente)))))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(129, 129, 129)
                             .addComponent(jLabel6))
@@ -133,7 +132,7 @@ public class CadastroCliente extends javax.swing.JFrame {
                         .addComponent(voltar)
                         .addGap(68, 68, 68)
                         .addComponent(jLabel1)))
-                .addContainerGap(107, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,7 +156,7 @@ public class CadastroCliente extends javax.swing.JFrame {
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(cpfCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(codCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 26, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -178,14 +177,14 @@ public class CadastroCliente extends javax.swing.JFrame {
         int idade = Integer.parseInt(idadeCliente.getText().trim());
         int compras = 0;
        
-        Cliente cliente = new Cliente(compras, nomeCliente.getText(), cpfCliente.getText(), idade);
+        Cliente cliente = new Cliente(compras, nomeCliente.getText(), codCliente.getText(), idade);
         
         
         
         int verificador = 0;
         
         for(int i = 0; i < bancoDeDados.clientes.size(); i++){
-            if(bancoDeDados.clientes.get(i).getCPF().equals(cpfCliente.getText())){
+            if(bancoDeDados.clientes.get(i).getCodigoIdentificacao().equals(codCliente.getText())){
                 verificador =1;
             }
         }
@@ -255,7 +254,7 @@ public class CadastroCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cadastrar;
-    private javax.swing.JTextField cpfCliente;
+    private javax.swing.JTextField codCliente;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JTextField idadeCliente;
     private javax.swing.JColorChooser jColorChooser1;

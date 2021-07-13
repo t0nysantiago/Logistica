@@ -59,7 +59,7 @@ public class LoginCliente extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("CPF");
+        jLabel3.setText("Codigo Identificacao");
 
         jButton1.setText("Entrar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -97,7 +97,7 @@ public class LoginCliente extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(155, 155, 155)
                         .addComponent(jButton1)))
-                .addContainerGap(158, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,7 +133,7 @@ public class LoginCliente extends javax.swing.JFrame {
         
         int verificador = 0;
         for(int i = 0; i < bancoDeDados.clientes.size(); i++){
-             if(loginCliente.getText().equals(bancoDeDados.clientes.get(i).getCPF())){
+             if(loginCliente.getText().equals(bancoDeDados.clientes.get(i).getCodigoIdentificacao())){
                 verificador = 1;
              }
         }

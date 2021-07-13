@@ -10,12 +10,12 @@ import java.util.InputMismatchException;
 public class Pessoa {
     
     private String nome;
-    private String cpf;
+    private String codigoIdentificacao;
     private int idade;
 
-    public Pessoa(String nome, String cpf, int idade) {
+    public Pessoa(String nome, String codigoIdentificacao, int idade) {
         this.nome = nome;
-        this.cpf = cpf;
+        this.codigoIdentificacao = codigoIdentificacao;
         this.idade = idade;
     }
     
@@ -27,12 +27,12 @@ public class Pessoa {
         this.nome = nome;
     }
 
-    public String getCPF() {
-        return cpf;
+    public String getCodigoIdentificacao() {
+        return codigoIdentificacao;
     }
 
-    public void setCPF(String cpf) {
-        this.cpf = cpf;
+    public void setCodigoIdentificacao(String codigoIdentificacao) {
+        this.codigoIdentificacao = codigoIdentificacao;
     }
 
     public int getIdade() {

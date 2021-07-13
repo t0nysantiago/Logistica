@@ -57,7 +57,7 @@ public class ProdutosCliente extends javax.swing.JFrame {
         txtSelecionaCod = new javax.swing.JTextField();
         txtSelecionaQuant = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        txtCPF = new javax.swing.JTextField();
+        txtcodigoIdentificacao = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtCatSelecionada1 = new javax.swing.JTextArea();
@@ -131,7 +131,7 @@ public class ProdutosCliente extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setText("CPF");
+        jLabel7.setText("Codigo Identificacao");
 
         jButton2.setText("Finalizar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -167,32 +167,31 @@ public class ProdutosCliente extends javax.swing.JFrame {
                         .addComponent(cmbCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(87, 87, 87))))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(266, 266, 266)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(197, 197, 197)
-                        .addComponent(jLabel7)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(266, 266, 266)
+                .addComponent(jLabel2)
+                .addContainerGap(289, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtSelecionaCod, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtSelecionaQuant, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(111, 111, 111)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtcodigoIdentificacao, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtSelecionaCod, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtSelecionaQuant, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -225,7 +224,7 @@ public class ProdutosCliente extends javax.swing.JFrame {
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtcodigoIdentificacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addGap(11, 11, 11)
                 .addComponent(txtEscolheProd)
@@ -276,18 +275,18 @@ public class ProdutosCliente extends javax.swing.JFrame {
         
         int codSelecionado = 0;
         int quantSelecionada = 0;
-        String cpf;
+        String codigoIdent;
         double resultado = 0;
         
         
         
-        cpf = txtCPF.getText();
+        codigoIdent = txtcodigoIdentificacao.getText();
         codSelecionado = Integer.parseInt(txtSelecionaCod.getText());
         quantSelecionada = Integer.parseInt(txtSelecionaQuant.getText());
         
         for(int j = 0; j < bancoDeDados.clientes.size(); j++){
             
-            if(bancoDeDados.clientes.get(j).getCPF().equals(cpf)){
+            if(bancoDeDados.clientes.get(j).getCodigoIdentificacao().equals(codigoIdent)){
                 
                 double compras = bancoDeDados.clientes.get(j).getCompras();
                 
@@ -301,7 +300,11 @@ public class ProdutosCliente extends javax.swing.JFrame {
                 
                  
                Carrinho carrinho = new Carrinho(bancoDeDados.produtos.get(i).getCategoria(),bancoDeDados.produtos.get(i).getPreco(),bancoDeDados.produtos.get(i).getNome(), bancoDeDados.produtos.get(i).getCodigo(), quantSelecionada);
-                bancoDeDados.addCarinho(carrinho);
+               bancoDeDados.addCarinho(carrinho);
+               txtCarrinho.append("CATEGORIA: " + bancoDeDados.produtos.get(i).getCategoria() + "\n" +
+                    "Nome: " + bancoDeDados.produtos.get(i).getNome() + " | Codigo: " + bancoDeDados.produtos.get(i).getCodigo() + " | Quantidade: " 
+                    + quantSelecionada + " | Preco: " + bancoDeDados.produtos.get(i).getPreco() + " R$" + " | Total: " + compras + "\n"
+                    + "-------------------------------------------------------------------------------------------------------------------------------" + "\n");
             }
         }
         
@@ -327,7 +330,7 @@ public class ProdutosCliente extends javax.swing.JFrame {
         double verifica = 0;
         
         for(int i = 0; i < bancoDeDados.clientes.size();i++){
-            if(bancoDeDados.clientes.get(i).getCPF().equals(txtCPF.getText())){
+            if(bancoDeDados.clientes.get(i).getCodigoIdentificacao().equals(txtcodigoIdentificacao.getText())){
                 bancoDeDados.clientes.get(i).setCompras(0);
                 verifica = bancoDeDados.clientes.get(i).getCompras();
             }
@@ -335,7 +338,12 @@ public class ProdutosCliente extends javax.swing.JFrame {
         
         
         JOptionPane.showMessageDialog(null, "Compra finalizada! " + verifica);
-           
+        
+        txtCarrinho.setText("");
+        txtSelecionaCod.setText("");
+        txtSelecionaQuant.setText("");
+        txtcodigoIdentificacao.setText("");
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -396,11 +404,11 @@ public class ProdutosCliente extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField txtCPF;
     private javax.swing.JTextArea txtCarrinho;
     private javax.swing.JTextArea txtCatSelecionada1;
     private javax.swing.JButton txtEscolheProd;
     private javax.swing.JTextField txtSelecionaCod;
     private javax.swing.JTextField txtSelecionaQuant;
+    private javax.swing.JTextField txtcodigoIdentificacao;
     // End of variables declaration//GEN-END:variables
 }
