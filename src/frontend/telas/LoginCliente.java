@@ -6,6 +6,7 @@
 package frontend.telas;
 
 import backend.BancoDeDados;
+import backend.ClienteExcluido;
 import javax.swing.JOptionPane;
 
 /**
@@ -41,6 +42,7 @@ public class LoginCliente extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
 
         jButton2.setText("jButton2");
 
@@ -75,29 +77,38 @@ public class LoginCliente extends javax.swing.JFrame {
             }
         });
 
+        btnExcluir.setText("Excluir Cadastro");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jButton3)
+                .addGap(80, 80, 80)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(35, 35, 35)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(112, 112, 112)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jButton3)
-                        .addGap(35, 35, 35)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(112, 112, 112)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(loginCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(171, 171, 171)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(155, 155, 155)
-                        .addComponent(jButton1)))
-                .addContainerGap(79, Short.MAX_VALUE))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnExcluir))
+                    .addComponent(loginCliente))
+                .addGap(31, 31, 31))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,7 +124,9 @@ public class LoginCliente extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(loginCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(btnExcluir))
                 .addContainerGap(87, Short.MAX_VALUE))
         );
 
@@ -155,6 +168,34 @@ public class LoginCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_loginClienteActionPerformed
 
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        // TODO add your handling code here:
+        
+        int verificador = 0;
+        for(int i = 0; i < bancoDeDados.clientes.size(); i++){
+             if(loginCliente.getText().equals(bancoDeDados.clientes.get(i).getCodigoIdentificacao())){
+                verificador = 1;
+             }
+        }
+        
+        if(verificador == 1){
+            
+            for(int i = 0; i < bancoDeDados.clientes.size(); i++){
+            if(loginCliente.getText().equals(bancoDeDados.clientes.get(i).getCodigoIdentificacao())){
+                ClienteExcluido clienteExcluido = new ClienteExcluido(bancoDeDados.clientes.get(i).getCompras(), bancoDeDados.clientes.get(i).getNome(), 
+                        bancoDeDados.clientes.get(i).getCodigoIdentificacao(), bancoDeDados.clientes.get(i).getIdade());
+                bancoDeDados.clientesExcluidos.add(clienteExcluido);
+                bancoDeDados.clientes.remove(i);
+                JOptionPane.showMessageDialog(null, "Usuario Excluido! \n");
+            }
+        }
+        }
+        if(verificador == 0){
+             JOptionPane.showMessageDialog(null, "Usuario não cadastrado! \n");
+        }
+        
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -191,6 +232,7 @@ public class LoginCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

@@ -6,6 +6,8 @@
 package frontend.telas;
 
 import backend.BancoDeDados;
+import backend.ProdutoExcluido;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -49,6 +51,10 @@ public class ProdutosFuncionarios extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        btnExcluirProd = new javax.swing.JButton();
+        txtExcluiProd = new javax.swing.JTextField();
+        btnListarProdExcluidos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -101,12 +107,27 @@ public class ProdutosFuncionarios extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Verificar Vendas");
 
         jLabel6.setText("Verificar clientes");
 
         jButton2.setText("Cliente");
+
+        jLabel7.setText("Codigo para Excluir Produto");
+
+        btnExcluirProd.setText("Excluir Produto");
+        btnExcluirProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirProdActionPerformed(evt);
+            }
+        });
+
+        btnListarProdExcluidos.setText("Listar Produtos Excluidos");
+        btnListarProdExcluidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarProdExcluidosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -121,7 +142,17 @@ public class ProdutosFuncionarios extends javax.swing.JFrame {
                                 .addComponent(btnCadastrar)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(83, 83, 83)
+                                .addComponent(btnListarProdExcluidos))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(49, 49, 49)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnVoltar)
@@ -131,26 +162,18 @@ public class ProdutosFuncionarios extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(23, 23, 23)
                                 .addComponent(jLabel2)))))
-                .addGap(39, 39, 39)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNovaQuant, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
-                            .addComponent(jButton1))))
-                .addContainerGap(26, Short.MAX_VALUE))
+                            .addComponent(btnExcluirProd, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtExcluiProd, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtNovaQuant, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,34 +184,43 @@ public class ProdutosFuncionarios extends javax.swing.JFrame {
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCadastrar)
-                    .addComponent(btnListar))
-                .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addGap(35, 35, 35)
+                            .addComponent(jLabel3)
+                            .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(txtNovaQuant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEditar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(txtExcluiProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnExcluirProd)
+                        .addGap(56, 56, 56)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
                             .addComponent(jButton2))
-                        .addGap(27, 27, 27)
+                        .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jLabel5))
-                        .addGap(68, 68, 68))))
+                            .addComponent(jLabel5)
+                            .addComponent(jButton1))
+                        .addGap(34, 34, 34))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnListar)
+                            .addComponent(btnCadastrar))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnListarProdExcluidos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
 
         pack();
@@ -205,6 +237,8 @@ public class ProdutosFuncionarios extends javax.swing.JFrame {
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
         // TODO add your handling code here:
+        
+        txtListar.setText("");
         
         String armazenaProdutos = null;
         
@@ -254,6 +288,51 @@ public class ProdutosFuncionarios extends javax.swing.JFrame {
         vendaFun.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void btnExcluirProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirProdActionPerformed
+        // TODO add your handling code here:
+        
+        int verificador = 0;
+        for(int i = 0; i < bancoDeDados.produtos.size(); i++){
+             if(txtExcluiProd.getText().equals(String.valueOf(bancoDeDados.produtos.get(i).getCodigo()))){
+                verificador = 1;
+             }
+        }
+
+        if(verificador == 1){
+            
+            for(int i = 0; i < bancoDeDados.produtos.size(); i++){
+            if(txtExcluiProd.getText().equals(String.valueOf(bancoDeDados.produtos.get(i).getCodigo()))){
+                ProdutoExcluido produtoExcluido = new ProdutoExcluido(bancoDeDados.produtos.get(i).getPreco(), bancoDeDados.produtos.get(i).getNome(), 
+                        bancoDeDados.produtos.get(i).getCodigo(), bancoDeDados.produtos.get(i).getQuantEstoque(), bancoDeDados.produtos.get(i).getCategoria());
+                bancoDeDados.produtosExcluidos.add(produtoExcluido);
+                bancoDeDados.produtos.remove(i);
+                JOptionPane.showMessageDialog(null, "Produto Excluido! \n");
+            }
+        }
+        }
+        if(verificador == 0){
+             JOptionPane.showMessageDialog(null, "Produto não cadastrado! \n");
+        }
+        
+    }//GEN-LAST:event_btnExcluirProdActionPerformed
+
+    private void btnListarProdExcluidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarProdExcluidosActionPerformed
+        // TODO add your handling code here:
+        
+        txtListar.setText("");
+        
+        String armazenaProdutosExcluidos = null;
+        
+        for(int i = 0; i < bancoDeDados.produtosExcluidos.size(); i++){
+            armazenaProdutosExcluidos = ("Nome: " + bancoDeDados.produtosExcluidos.get(i).getNomeExcluido()+ " | Categoria: " 
+                    + bancoDeDados.produtosExcluidos.get(i).getCategoriaExcluido()
+                    + " | Codigo: " + bancoDeDados.produtosExcluidos.get(i).getCodigoExcluido()+ " | Estoque: " 
+                    + bancoDeDados.produtosExcluidos.get(i).getQuantEstoqueExcluido()+ " | Preco: " + bancoDeDados.produtosExcluidos.get(i).getPrecoExcluido()+ " R$\n");
+            txtListar.append(armazenaProdutosExcluidos);
+        }
+        
+    }//GEN-LAST:event_btnListarProdExcluidosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -292,7 +371,9 @@ public class ProdutosFuncionarios extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnExcluirProd;
     private javax.swing.JButton btnListar;
+    private javax.swing.JButton btnListarProdExcluidos;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -302,8 +383,10 @@ public class ProdutosFuncionarios extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtCodigo;
+    private javax.swing.JTextField txtExcluiProd;
     private javax.swing.JTextArea txtListar;
     private javax.swing.JTextField txtNovaQuant;
     // End of variables declaration//GEN-END:variables

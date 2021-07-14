@@ -29,6 +29,8 @@ public class BancoDeDados {
    public List<Funcionario> funcionario = new ArrayList<>();
    public List<Vendas> vendas = new ArrayList<>();
    public List<Carrinho> carrinho = new ArrayList<>();
+   public List<ProdutoExcluido> produtosExcluidos = new ArrayList<>();
+   public List<ClienteExcluido> clientesExcluidos = new ArrayList<>();
    
    
    
@@ -57,9 +59,18 @@ public class BancoDeDados {
             }
         }
     }
+    
+    public void addProdutoExcluido(ProdutoExcluido produtoExcluido){
+        produtosExcluidos.add(produtoExcluido);
+    }
 
     public void addCliente(Cliente cliente){
         clientes.add(cliente);
+        
+    }
+    
+    public void addClienteExcluido(ClienteExcluido clienteExcluido){
+        clientesExcluidos.add(clienteExcluido);
         
     }
    
