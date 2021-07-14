@@ -14,9 +14,9 @@ import java.io.Serializable;
 public class Cliente extends Pessoa implements Serializable{
     
     private double compras;
-    
-    public Cliente(double compras, String nome, String cpf, int idade) {
-        super(nome, cpf, idade);
+
+    public Cliente(double compras, String nome, String codigoIdentificacao, int idade) {
+        super(nome, codigoIdentificacao, idade);
         this.compras = compras;
     }
 
