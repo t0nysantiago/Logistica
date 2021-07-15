@@ -11,15 +11,13 @@ package backend;
  */
 
 import backend.Produto;
-import java.awt.HeadlessException;
-import java.io.FileInputStream;
+import java.io.BufferedReader;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.ObjectInputStream;
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 public class BancoDeDados {
@@ -33,9 +31,106 @@ public class BancoDeDados {
    public List<ClienteExcluido> clientesExcluidos = new ArrayList<>();
    
    
+   public void gravarClientes(){
+           try{
+            FileOutputStream arquivoClientes = new FileOutputStream("arquivoCliente.txt");
+            PrintWriter ac = new PrintWriter(arquivoClientes);
+            ac.println();
+             for(int i = 0; i < clientes.size(); i++){
+                   ac.println(clientes.get(i).getNome() + ";" + clientes.get(i).getCodigoIdentificacao()
+                           + ";" + clientes.get(i).getCompras() + ";" + clientes.get(i).getIdade() + ";");
+             }
+            ac.close();
+            arquivoClientes.close();
+        }
+        catch(Exception e){
+            System.out.println("eroo");
+        }
+   }
+   
+   public void gravarProdutos(){
+       try{
+            FileOutputStream arquivoProdutos = new FileOutputStream("arquivoProdutos.txt");
+            PrintWriter ac = new PrintWriter(arquivoProdutos);
+            ac.println();
+             for(int i = 0; i < produtos.size(); i++){
+                   ac.println(produtos.get(i).getCategoria() + ";" + produtos.get(i).getPreco()
+                           + ";" + produtos.get(i).getNome() + ";" + produtos.get(i).getCodigo() + ";"
+                   + produtos.get(i).getQuantEstoque() + ";");
+             }
+            ac.close();
+            arquivoProdutos.close();
+        }
+        catch(Exception e){
+            System.out.println("eroo");
+        }
+   }
+   
+   public void lerProdutos(){
+        
+     FileReader fr = null;
+     BufferedReader br = null;
+      try{
+           
+           fr = new FileReader("arquivoProdutos.txt");
+           br = new BufferedReader(fr);
+           
+           String line = br.readLine();
+           line = br.readLine();
+           while(line != null){
+               String[] vect = line.split(";");
+               String cat = vect[0];
+               Double prec = Double.parseDouble(vect[1]);
+               String nome = vect[2];
+               int cod = Integer.parseInt(vect[3]);
+               int quant = Integer.parseInt(vect[4]);
+               Produto prod = new Produto(cat, prec, nome, cod, quant);
+               addProduto(prod);
+               line = br.readLine();
+           }
+           
+       }
+       catch(IOException e){
+           System.out.println("Error prod");
+       }
+     
+   }
+   
+   public void lerCliente(){
+       
+     FileReader fr = null;
+     BufferedReader br = null;
+       try{
+           
+           fr = new FileReader("arquivoCliente.txt");
+           br = new BufferedReader(fr);
+           
+           String line = br.readLine();
+           line = br.readLine();
+           while(line != null){
+               String[] vect = line.split(";");
+               String name = vect[0];
+               String codId = vect[1];
+               Double compras = Double.parseDouble(vect[2]);
+               int idad = Integer.parseInt(vect[3]);
+               
+               Cliente clie = new Cliente(compras, name, codId, idad);
+               addCliente(clie);
+               
+               line = br.readLine();
+           }
+           
+       }
+       catch(IOException e){
+           System.out.println("Error");
+       }
+   }
+   
    
     public void addCarinho(Carrinho carrinho){
         this.carrinho.add(carrinho);
+        
+        
     }
     
     public void resetCarrinho(){
@@ -66,7 +161,7 @@ public class BancoDeDados {
 
     public void addCliente(Cliente cliente){
         clientes.add(cliente);
-        
+       
     }
     
     public void addClienteExcluido(ClienteExcluido clienteExcluido){
