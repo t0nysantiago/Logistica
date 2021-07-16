@@ -6,6 +6,7 @@
 package frontend.telas;
 
 import backend.BancoDeDados;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -131,17 +132,26 @@ public class VendasClientes extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
+        String codIdent = codIdenticacao.getText();
+        
+        if(codIdent.length() != 4){
+            
+            JOptionPane.showMessageDialog(null, "O codigo de identificacao esta incorreto, ele deve conter 4 digitos! \n");
+            codIdenticacao.setText("");
+            
+        }else{
+        
         for(int i = 0; i < bancoDeDados.vendas.size(); i++){
             if(codIdenticacao.getText().equals(bancoDeDados.vendas.get(i).getCodIdentificacao())){
                 String vendaClientes;
                 vendaClientes = "Nome: " + bancoDeDados.vendas.get(i).getNome() + " | Categoria: " + bancoDeDados.vendas.get(i).getCategoria() 
                     + " | Codigo: " + bancoDeDados.vendas.get(i).getCodigo() + " | Estoque: " 
-                    + bancoDeDados.vendas.get(i).getQuantEstoque() + " | Preco: R$" + bancoDeDados.vendas.get(i).getPreco() + "Cliente " +
-                       bancoDeDados.vendas.get(i).getNome() + " \n";
+                    + bancoDeDados.vendas.get(i).getQuantEstoque() + " | Preco: R$" + bancoDeDados.vendas.get(i).getPreco() + " \n";
                 txtVendaClientes.append(vendaClientes);
             }
         }
-        
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

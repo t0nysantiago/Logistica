@@ -144,6 +144,15 @@ public class LoginCliente extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
+        String codigo;
+        
+        codigo = loginCliente.getText();
+        
+        if(codigo.length() != 4){
+            loginCliente.setText("");
+            JOptionPane.showMessageDialog(null, "Os campos do cadastro que estao em branco ou ficaram por possuir algum tipo de erro! \n");
+        }else{
+        
         int verificador = 0;
         for(int i = 0; i < bancoDeDados.clientes.size(); i++){
              if(loginCliente.getText().equals(bancoDeDados.clientes.get(i).getCodigoIdentificacao())){
@@ -161,7 +170,7 @@ public class LoginCliente extends javax.swing.JFrame {
         if(verificador == 0){
              JOptionPane.showMessageDialog(null, "Usuario não cadastrado! \n");
         }
-        
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void loginClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginClienteActionPerformed
@@ -171,11 +180,29 @@ public class LoginCliente extends javax.swing.JFrame {
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         // TODO add your handling code here:
         
+        String codigo;
+        
+        codigo = loginCliente.getText();
+        
+        if(codigo.length() != 4){
+            loginCliente.setText("");
+        }
+        
         int verificador = 0;
         for(int i = 0; i < bancoDeDados.clientes.size(); i++){
              if(loginCliente.getText().equals(bancoDeDados.clientes.get(i).getCodigoIdentificacao())){
                 verificador = 1;
              }
+        }
+        
+        if(loginCliente.getText().equals("")){
+            verificador = 2;
+        }
+        
+        if(verificador == 2){
+            
+            JOptionPane.showMessageDialog(null, "Os campos do cadastro que estao em branco ou ficaram por possuir algum tipo de erro! \n");
+            
         }
         
         if(verificador == 1){

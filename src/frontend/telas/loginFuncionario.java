@@ -145,6 +145,15 @@ public class loginFuncionario extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
+        String codIdent = loginFunc.getText();
+        
+        if(codIdent.length() != 4){
+            
+            JOptionPane.showMessageDialog(null, "O codigo de identificacao esta incorreto, ele deve conter 4 digitos! \n");
+            loginFunc.setText("");
+            
+        }else{
 
        int codEmpr = Integer.parseInt(this.codEmpresa.getText());
 
@@ -169,7 +178,7 @@ public class loginFuncionario extends javax.swing.JFrame {
         if(verificador == 0){
             JOptionPane.showMessageDialog(null, "Usuario não cadastrado! \n");
         }
-
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

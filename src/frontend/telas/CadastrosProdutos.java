@@ -199,6 +199,30 @@ public class CadastrosProdutos extends javax.swing.JFrame {
         int codigo = Integer.parseInt(txtCodigo.getText().trim());
         double preco = Double.parseDouble(txtPreco.getText().trim());
         int quantEstoque = Integer.parseInt(txtEstoque.getText().trim());
+        String categoria = txtCategoria.getText();
+        
+        if(categoria.equals("Rifle") || categoria.equals("Pistola") || categoria.equals("Submetralhadora") || categoria.equals("Pesada") || categoria.equals("Branca")){
+            
+            txtCategoria.setText(categoria);
+            
+        }else{
+            txtCategoria.setText("");
+        }
+        
+        if(preco <= 0){
+            txtPreco.setText("");
+            JOptionPane.showMessageDialog(null, "Os campos do cadastro que estao em branco ou ficaram por possuir algum tipo de erro! \n");
+        }else if(codigo <= 0 || codigo >= 100){
+            txtCodigo.setText("");
+            JOptionPane.showMessageDialog(null, "Os campos do cadastro que estao em branco ou ficaram por possuir algum tipo de erro! \n");
+        }else if(quantEstoque < 0){
+            txtEstoque.setText("");
+            JOptionPane.showMessageDialog(null, "Os campos do cadastro que estao em branco ou ficaram por possuir algum tipo de erro! \n");
+        }else if(txtCategoria.getText().equals("")){
+            
+            JOptionPane.showMessageDialog(null, "Os campos do cadastro que estao em branco ou ficaram por possuir algum tipo de erro! \n");
+            
+        }else{
        
         Produto produto = new Produto(txtCategoria.getText(), preco, txtNome.getText(), codigo, quantEstoque);
         
@@ -221,7 +245,7 @@ public class CadastrosProdutos extends javax.swing.JFrame {
        if(verificador == 1){
            JOptionPane.showMessageDialog(null, "Produto já possui cadastro! \n");
        }
-        
+        }
        for(int i = 0; i < bancoDeDados.produtos.size(); i++){
             System.out.println("Nome: " + bancoDeDados.produtos.get(i).getNome());
         }

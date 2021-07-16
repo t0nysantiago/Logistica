@@ -28,7 +28,7 @@ public class Logistica {
         
         banco.lerCliente();
         banco.lerProdutos();
-        Funcionario funci = new Funcionario("t", "2", 0);
+        Funcionario funci = new Funcionario("t", "1234", 0);
         banco.addFuncionario(funci);
         TelaInicial telaIncial = new TelaInicial(banco);
         telaIncial.setVisible(true);

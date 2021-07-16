@@ -289,11 +289,21 @@ public class ProdutosCliente extends javax.swing.JFrame {
         String codigoIdent;
         double resultado = 0;
         
-        
-        
         codigoIdent = txtcodigoIdentificacao.getText();
         codSelecionado = Integer.parseInt(txtSelecionaCod.getText());
         quantSelecionada = Integer.parseInt(txtSelecionaQuant.getText());
+        
+        
+        if(codSelecionado <= 0 || codSelecionado >= 100){
+            txtSelecionaCod.setText("");
+            JOptionPane.showMessageDialog(null, "O codigo do produto esta incorreto, eles variam de 1 ate 100! \n");
+        }else if(quantSelecionada <= 0){
+            txtSelecionaQuant.setText("");
+            JOptionPane.showMessageDialog(null, "Quantidade selecionada nao eh um numero inteiro ou eh menor ou igual a zero! \n");
+        }else if(codigoIdent.length() != 4){
+            txtcodigoIdentificacao.setText("");
+            JOptionPane.showMessageDialog(null, "O codigo de identificacao esta incorreto, ele deve conter 4 digitos! \n");
+        }else{
         
         for(int j = 0; j < bancoDeDados.clientes.size(); j++){
             
@@ -337,7 +347,7 @@ public class ProdutosCliente extends javax.swing.JFrame {
         }
        
         System.out.println(resultado);
-        
+        }
     }//GEN-LAST:event_txtEscolheProdActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

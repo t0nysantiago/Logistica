@@ -55,6 +55,7 @@ public class ProdutosFuncionarios extends javax.swing.JFrame {
         btnExcluirProd = new javax.swing.JButton();
         txtExcluiProd = new javax.swing.JTextField();
         btnListarProdExcluidos = new javax.swing.JButton();
+        btnSemEstoque = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -134,6 +135,13 @@ public class ProdutosFuncionarios extends javax.swing.JFrame {
             }
         });
 
+        btnSemEstoque.setText("Listar sem Estoque");
+        btnSemEstoque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSemEstoqueActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -143,14 +151,15 @@ public class ProdutosFuncionarios extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnCadastrar)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnListar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(83, 83, 83)
-                                .addComponent(btnListarProdExcluidos))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnListarProdExcluidos))
+                                .addGap(21, 21, 21)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnListar, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+                                    .addComponent(btnSemEstoque, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(49, 49, 49)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
@@ -222,7 +231,9 @@ public class ProdutosFuncionarios extends javax.swing.JFrame {
                             .addComponent(btnListar)
                             .addComponent(btnCadastrar))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnListarProdExcluidos)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnListarProdExcluidos)
+                            .addComponent(btnSemEstoque))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
                         .addContainerGap())))
@@ -266,22 +277,33 @@ public class ProdutosFuncionarios extends javax.swing.JFrame {
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
         
-        String codigoDigitado = txtCodigo.getText();
+        int codigoDigitado = Integer.parseInt(txtCodigo.getText());
         int quantDigitada = Integer.parseInt(txtNovaQuant.getText());
+        int pegaQuantEstoque = 0;
+        int resultado = 0;
         
-        while(quantDigitada <= 0){
-            quantDigitada = Integer.parseInt(txtNovaQuant.getText());
-        }
+        
+        if(codigoDigitado <= 0 || codigoDigitado >= 100){
+            txtCodigo.setText("");
+            JOptionPane.showMessageDialog(null, "O codigo do produto esta incorreto, eles variam de 1 ate 100! \n");
+        }else if(quantDigitada <= 0){
+            
+            txtNovaQuant.setText("");
+            JOptionPane.showMessageDialog(null, "Quantidade selecionada nao eh um numero inteiro ou eh menor ou igual a zero! \n");
+            
+        }else{
         
         for(int i = 0; i < bancoDeDados.produtos.size(); i++){
-            if(codigoDigitado.equals(bancoDeDados.produtos.get(i).getCodigo())){
-                bancoDeDados.produtos.get(i).setQuantEstoque(bancoDeDados.produtos.get(i).getQuantEstoque() + quantDigitada);
+            if(codigoDigitado == (bancoDeDados.produtos.get(i).getCodigo())){
+                pegaQuantEstoque = bancoDeDados.produtos.get(i).getQuantEstoque();
+                resultado = pegaQuantEstoque + quantDigitada;
+                bancoDeDados.produtos.get(i).setQuantEstoque(resultado);
             }
         }
-        
+        JOptionPane.showMessageDialog(null, "Produto Editado! \n");
         txtCodigo.setText("");
         txtNovaQuant.setText("");
-        
+        } 
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -295,6 +317,15 @@ public class ProdutosFuncionarios extends javax.swing.JFrame {
 
     private void btnExcluirProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirProdActionPerformed
         // TODO add your handling code here:
+        
+        int codSelecionado = Integer.parseInt(txtExcluiProd.getText());
+        
+        if(codSelecionado <= 0 || codSelecionado >= 100){
+            
+            txtExcluiProd.setText("");
+            JOptionPane.showMessageDialog(null, "O codigo do produto esta incorreto, eles variam de 1 ate 100! \n");
+            
+        }else{
         
         int verificador = 0;
         for(int i = 0; i < bancoDeDados.produtos.size(); i++){
@@ -318,7 +349,7 @@ public class ProdutosFuncionarios extends javax.swing.JFrame {
         if(verificador == 0){
              JOptionPane.showMessageDialog(null, "Produto não cadastrado! \n");
         }
-        
+        }
     }//GEN-LAST:event_btnExcluirProdActionPerformed
 
     private void btnListarProdExcluidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarProdExcluidosActionPerformed
@@ -347,6 +378,25 @@ public class ProdutosFuncionarios extends javax.swing.JFrame {
         cliFunci.setVisible(true);
         
     }//GEN-LAST:event_btnClienteActionPerformed
+
+    private void btnSemEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSemEstoqueActionPerformed
+        // TODO add your handling code here:
+        
+        txtListar.setText("");
+        
+        String armazenaProdutosSemEstoque = null;
+        
+        for(int i = 0; i < bancoDeDados.produtos.size(); i++){
+            if(bancoDeDados.produtos.get(i).getQuantEstoque() == 0){
+            armazenaProdutosSemEstoque = ("Nome: " + bancoDeDados.produtos.get(i).getNome() + " | Categoria: " + bancoDeDados.produtos.get(i).getCategoria() 
+                    + " | Codigo: " + bancoDeDados.produtos.get(i).getCodigo() + " | Estoque: " 
+                    + bancoDeDados.produtos.get(i).getQuantEstoque() + " | Preco: " + bancoDeDados.produtos.get(i).getPreco() + " R$\n");
+            txtListar.append(armazenaProdutosSemEstoque);
+        }else{
+                txtListar.setText("");
+            }
+        }
+    }//GEN-LAST:event_btnSemEstoqueActionPerformed
 
     /**
      * @param args the command line arguments
@@ -390,6 +440,7 @@ public class ProdutosFuncionarios extends javax.swing.JFrame {
     private javax.swing.JButton btnExcluirProd;
     private javax.swing.JButton btnListar;
     private javax.swing.JButton btnListarProdExcluidos;
+    private javax.swing.JButton btnSemEstoque;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
