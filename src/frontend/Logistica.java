@@ -28,8 +28,10 @@ public class Logistica {
         
         banco.lerCliente();
         banco.lerProdutos();
-        Funcionario funci = new Funcionario("t", "1234", 0);
-        banco.addFuncionario(funci);
+        banco.lerFuncionarios();
+        banco.lerVendas();
+        banco.lerClientesExcluidos();
+        banco.lerProdExcluidos();
         TelaInicial telaIncial = new TelaInicial(banco);
         telaIncial.setVisible(true);
     }

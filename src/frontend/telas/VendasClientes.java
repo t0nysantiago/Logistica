@@ -92,7 +92,7 @@ public class VendasClientes extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(codIdenticacao)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1)
                         .addGap(41, 41, 41))))
             .addGroup(layout.createSequentialGroup()
@@ -126,8 +126,8 @@ public class VendasClientes extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
 
-        IdentificacaoCliente idcli = new IdentificacaoCliente(bancoDeDados);
-        idcli.setVisible(true);
+        ProdutosCliente prodCl = new ProdutosCliente(bancoDeDados);
+        prodCl.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

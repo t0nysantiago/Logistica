@@ -191,15 +191,16 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         int codEmpr = Integer.parseInt(this.codEmpresa.getText());
         
         String codigo = codFuncionairo.getText();
+        System.out.println("codi:" + codigo.length());
         
-        if(idade <= 18 || idade >= 120 && codigo.length() != 4){
+        if((idade < 18 || idade >= 120) && codigo.length() != 4){
                 idadeFuncionario.setText("");
                 codFuncionairo.setText("");
                 JOptionPane.showMessageDialog(null, "O codigo de identificacao esta incorreto, ele deve conter 4 digitos e a idade nao compreende o limite de 18 a 120 anos! \n");
             }else if(codigo.length() != 4){
                 codFuncionairo.setText("");
                 JOptionPane.showMessageDialog(null, "O codigo de identificacao esta incorreto, ele deve conter 4 digitos! \n");
-            }else if(idade <= 18 || idade >= 120){
+            }else if(idade < 18 || idade >= 120){
                 idadeFuncionario.setText("");
                 JOptionPane.showMessageDialog(null, "A idade nao compreende o limite de 18 a 120 anos! \n");
             }else{
@@ -228,10 +229,10 @@ public class CadastroFuncionario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Usuario já possui cadastro! \n");
         }
 
-        for(int i = 0; i < bancoDeDados.clientes.size(); i++){
-            System.out.println("nome: " + bancoDeDados.clientes.get(i).getNome());
-        }
+        
             }
+        
+        bancoDeDados.gravarFuncionario();
     }//GEN-LAST:event_cadastrarActionPerformed
 
     private void nomeFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeFuncionarioActionPerformed

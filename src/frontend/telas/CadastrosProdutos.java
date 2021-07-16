@@ -249,9 +249,9 @@ public class CadastrosProdutos extends javax.swing.JFrame {
        for(int i = 0; i < bancoDeDados.produtos.size(); i++){
             System.out.println("Nome: " + bancoDeDados.produtos.get(i).getNome());
         }
-      //  CadastroProduto cad = new CadastroProduto(bancoDeDados);
-        //dispose();
-       // cad.setVisible(true);
+      
+       
+        bancoDeDados.gravarProdutos();
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed

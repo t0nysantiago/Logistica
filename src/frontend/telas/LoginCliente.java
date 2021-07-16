@@ -221,6 +221,8 @@ public class LoginCliente extends javax.swing.JFrame {
              JOptionPane.showMessageDialog(null, "Usuario não cadastrado! \n");
         }
         
+        bancoDeDados.gravarClientesExcluido();
+        bancoDeDados.gravarClientes();
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**

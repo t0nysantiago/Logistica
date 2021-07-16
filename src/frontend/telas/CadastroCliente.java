@@ -179,14 +179,14 @@ public class CadastroCliente extends javax.swing.JFrame {
         String codigo = codCliente.getText();
         int compras = 0;
         
-        if(idade <= 18 || idade >= 120 && codigo.length() != 4){
+        if((idade < 18 || idade >= 120) && codigo.length() != 4){
                 idadeCliente.setText("");
                 codCliente.setText("");
                 JOptionPane.showMessageDialog(null, "O codigo de identificacao esta incorreto, ele deve conter 4 digitos e a idade nao compreende o limite de 18 a 120 anos! \n");
             }else if(codigo.length() != 4){
                 codCliente.setText("");
                 JOptionPane.showMessageDialog(null, "O codigo de identificacao esta incorreto, ele deve conter 4 digitos! \n");
-            }else if(idade <= 18 || idade >= 120){
+            }else if(idade < 18 || idade >= 120){
                 idadeCliente.setText("");
                 JOptionPane.showMessageDialog(null, "A idade nao compreende o limite de 18 a 120 anos! \n");
             }else{
@@ -216,6 +216,9 @@ public class CadastroCliente extends javax.swing.JFrame {
             System.out.println("nome: " + bancoDeDados.clientes.get(i).getNome());
         }
             }
+        
+        
+        bancoDeDados.gravarClientes();
     }//GEN-LAST:event_cadastrarActionPerformed
 
     private void nomeClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeClienteActionPerformed

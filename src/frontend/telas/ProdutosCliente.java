@@ -288,7 +288,7 @@ public class ProdutosCliente extends javax.swing.JFrame {
         int quantSelecionada = 0;
         String codigoIdent;
         double resultado = 0;
-        
+        String vari = "";
         codigoIdent = txtcodigoIdentificacao.getText();
         codSelecionado = Integer.parseInt(txtSelecionaCod.getText());
         quantSelecionada = Integer.parseInt(txtSelecionaQuant.getText());
@@ -307,17 +307,27 @@ public class ProdutosCliente extends javax.swing.JFrame {
         
         for(int j = 0; j < bancoDeDados.clientes.size(); j++){
             
+            
             if(bancoDeDados.clientes.get(j).getCodigoIdentificacao().equals(codigoIdent)){
                 
+                vari = bancoDeDados.clientes.get(j).getCodigoIdentificacao();
                 double compras = bancoDeDados.clientes.get(j).getCompras();
                 
         for(int i = 0; i < bancoDeDados.produtos.size(); i++){
             
             if(codSelecionado == bancoDeDados.produtos.get(i).getCodigo()){
                 
+                
+                if(quantSelecionada > bancoDeDados.produtos.get(i).getQuantEstoque()){
+                    JOptionPane.showMessageDialog(null, "Sem quantidade no estoque! \n");
+                }else{
+                    
+                
                 compras = (bancoDeDados.produtos.get(i).getPreco() * quantSelecionada) + compras;
                 
                 bancoDeDados.clientes.get(j).setCompras(compras);
+                
+                
                 
                  
                Carrinho carrinho = new Carrinho(bancoDeDados.produtos.get(i).getCategoria(),
@@ -344,9 +354,13 @@ public class ProdutosCliente extends javax.swing.JFrame {
         
         resultado = compras;
         }
-        }
-       
+        } 
+            
         System.out.println(resultado);
+        }
+        if(vari != codigoIdent){
+             JOptionPane.showMessageDialog(null, "erro de preechimento nos codigos ou no estoque \n");
+        }
         }
     }//GEN-LAST:event_txtEscolheProdActionPerformed
 
@@ -366,7 +380,14 @@ public class ProdutosCliente extends javax.swing.JFrame {
                         bancoDeDados.carrinho.get(j).getCodigo(), bancoDeDados.carrinho.get(j).getQuantEstoque(), 
                        bancoDeDados.clientes.get(i).getNome(), bancoDeDados.clientes.get(i).getCodigoIdentificacao());
             bancoDeDados.addVendas(venda);
-            bancoDeDados.produtos.get(i).setQuantEstoque(bancoDeDados.produtos.get(i).getQuantEstoque() - bancoDeDados.carrinho.get(i).getQuantEstoque());
+            for(int y = 0; y < bancoDeDados.produtos.size(); y++){
+                if(bancoDeDados.produtos.get(y).getCodigo() == bancoDeDados.carrinho.get(j).getCodigo()){
+                     int novoEst = bancoDeDados.produtos.get(i).getQuantEstoque() - bancoDeDados.carrinho.get(j).getQuantEstoque();
+                     System.out.println(novoEst);
+                     bancoDeDados.produtos.get(i).setQuantEstoque(novoEst);
+                }
+            }
+           
         }
                 bancoDeDados.clientes.get(i).setCompras(0);
                 verifica = bancoDeDados.clientes.get(i).getCompras();
@@ -389,6 +410,8 @@ public class ProdutosCliente extends javax.swing.JFrame {
         txtSelecionaQuant.setText("");
         txtcodigoIdentificacao.setText("");
         
+        bancoDeDados.gravarVendas();
+        bancoDeDados.gravarProdutos();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
