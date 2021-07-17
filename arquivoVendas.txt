@@ -1,3 +1,6 @@
 
 Rifle;16350.0;AK-47;1;3;Jonny;0608;
 Pesada;21000.0;Benelli;3;3;Jonny;0608;
+Pistola;9000.0;Taurus G2C;2;3;Jonny;0608;
+Rifle;21800.0;AK-47;1;4;Jonny;0608;
+Pistola;9000.0;Taurus G2C;2;3;Jonny;0608;

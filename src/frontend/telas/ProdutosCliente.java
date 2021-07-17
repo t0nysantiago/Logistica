@@ -9,7 +9,6 @@ import backend.BancoDeDados;
 import backend.Carrinho;
 import backend.Vendas;
 import javax.swing.JOptionPane;
-import javax.swing.JTabbedPane;
 
 /**
  *
@@ -293,17 +292,20 @@ public class ProdutosCliente extends javax.swing.JFrame {
         codSelecionado = Integer.parseInt(txtSelecionaCod.getText());
         quantSelecionada = Integer.parseInt(txtSelecionaQuant.getText());
         
-        
-        if(codSelecionado <= 0 || codSelecionado >= 100){
-            txtSelecionaCod.setText("");
-            JOptionPane.showMessageDialog(null, "O codigo do produto esta incorreto, eles variam de 1 ate 100! \n");
-        }else if(quantSelecionada <= 0){
+        if(quantSelecionada <= 0){
             txtSelecionaQuant.setText("");
             JOptionPane.showMessageDialog(null, "Quantidade selecionada nao eh um numero inteiro ou eh menor ou igual a zero! \n");
         }else if(codigoIdent.length() != 4){
             txtcodigoIdentificacao.setText("");
             JOptionPane.showMessageDialog(null, "O codigo de identificacao esta incorreto, ele deve conter 4 digitos! \n");
-        }else{
+        }
+        for(int i = 0; i < bancoDeDados.produtos.size(); i++){
+            if(bancoDeDados.produtos.get(i).getCodigo() == codSelecionado){
+                
+            }else{
+               JOptionPane.showMessageDialog(null, "O codigo não existe! \n");
+            }
+        }
         
         for(int j = 0; j < bancoDeDados.clientes.size(); j++){
             
@@ -346,7 +348,7 @@ public class ProdutosCliente extends javax.swing.JFrame {
                     + quantSelecionada + " | Preco: " + bancoDeDados.carrinho.get(u).getPreco() + " R$" + " | Total: " + compras + "\n"
                     + "-------------------------------------------------------------------------------------------------------------------------------" + "\n";
             txtCarrinho.append(impCarrinho);
-            }
+            
                
                
             }
@@ -358,9 +360,7 @@ public class ProdutosCliente extends javax.swing.JFrame {
             
         System.out.println(resultado);
         }
-        if(vari != codigoIdent){
-             JOptionPane.showMessageDialog(null, "erro de preechimento nos codigos ou no estoque \n");
-        }
+            
         }
     }//GEN-LAST:event_txtEscolheProdActionPerformed
 
@@ -370,11 +370,12 @@ public class ProdutosCliente extends javax.swing.JFrame {
         
         
          
-        double verifica = 0;
+        double totalPreco = 0;
         
         for(int i = 0; i < bancoDeDados.clientes.size();i++){
             if(bancoDeDados.clientes.get(i).getCodigoIdentificacao().equals(txtcodigoIdentificacao.getText())){
                 for(int j = 0; j < bancoDeDados.carrinho.size(); j++){
+                    totalPreco = bancoDeDados.carrinho.get(j).getPreco() + totalPreco;
             Vendas venda = new Vendas(bancoDeDados.carrinho.get(j).getCategoria(), 
                         bancoDeDados.carrinho.get(j).getPreco(), bancoDeDados.carrinho.get(j).getNome(), 
                         bancoDeDados.carrinho.get(j).getCodigo(), bancoDeDados.carrinho.get(j).getQuantEstoque(), 
@@ -390,7 +391,6 @@ public class ProdutosCliente extends javax.swing.JFrame {
            
         }
                 bancoDeDados.clientes.get(i).setCompras(0);
-                verifica = bancoDeDados.clientes.get(i).getCompras();
             }
         }
         
@@ -403,7 +403,7 @@ public class ProdutosCliente extends javax.swing.JFrame {
             System.out.println("tudo feito");
         }
         
-        JOptionPane.showMessageDialog(null, "Compra finalizada! " + verifica);
+        JOptionPane.showMessageDialog(null, "Compra finalizada, total a pagar: R$" + totalPreco);
         
         txtCarrinho.setText("");
         txtSelecionaCod.setText("");

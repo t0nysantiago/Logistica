@@ -358,8 +358,6 @@ public class BancoDeDados implements GravaArquivos, LerArquivos, Faturamento {
         }
         return fatura;
     }
-    
-    
 
-    
+
 }

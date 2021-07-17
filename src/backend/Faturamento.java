@@ -7,5 +7,4 @@ package backend;
 public interface Faturamento {
 
     public double faturamento();
-    
 }
