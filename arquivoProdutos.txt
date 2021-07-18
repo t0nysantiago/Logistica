@@ -1,4 +1,5 @@
 
-Rifle;5450.0;AK-47;1;-3;
-Pistola;3000.0;Taurus G2C;2;30;
+Rifle;5450.0;AK-47;1;7;
+Pistola;3000.0;Taurus G2C;2;3;
 Pesada;7000.0;Benelli;3;20;
+Rifle;3333.3;M4A4;5;15;

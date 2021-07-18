@@ -299,12 +299,17 @@ public class ProdutosCliente extends javax.swing.JFrame {
             txtcodigoIdentificacao.setText("");
             JOptionPane.showMessageDialog(null, "O codigo de identificacao esta incorreto, ele deve conter 4 digitos! \n");
         }
-        for(int i = 0; i < bancoDeDados.produtos.size(); i++){
-            if(bancoDeDados.produtos.get(i).getCodigo() == codSelecionado){
-                
-            }else{
-               JOptionPane.showMessageDialog(null, "O codigo não existe! \n");
+        
+        int tam = 0;
+        int verifica = 0;
+        while(tam < bancoDeDados.produtos.size()){
+            if(bancoDeDados.produtos.get(tam).getCodigo() == codSelecionado){
+                verifica = 1;
             }
+            tam++;
+        }
+        if(verifica == 0){
+            JOptionPane.showMessageDialog(null, "O codigo não existe! \n");
         }
         
         for(int j = 0; j < bancoDeDados.clientes.size(); j++){
@@ -383,9 +388,9 @@ public class ProdutosCliente extends javax.swing.JFrame {
             bancoDeDados.addVendas(venda);
             for(int y = 0; y < bancoDeDados.produtos.size(); y++){
                 if(bancoDeDados.produtos.get(y).getCodigo() == bancoDeDados.carrinho.get(j).getCodigo()){
-                     int novoEst = bancoDeDados.produtos.get(i).getQuantEstoque() - bancoDeDados.carrinho.get(j).getQuantEstoque();
+                     int novoEst = bancoDeDados.produtos.get(y).getQuantEstoque() - bancoDeDados.carrinho.get(j).getQuantEstoque();
                      System.out.println(novoEst);
-                     bancoDeDados.produtos.get(i).setQuantEstoque(novoEst);
+                     bancoDeDados.produtos.get(y).setQuantEstoque(novoEst);
                 }
             }
            
