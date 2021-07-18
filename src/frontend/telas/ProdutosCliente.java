@@ -283,6 +283,28 @@ public class ProdutosCliente extends javax.swing.JFrame {
     private void txtEscolheProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEscolheProdActionPerformed
         // TODO add your handling code here:
         
+        String erroMsg = null;
+        
+        try{
+            
+            int codSelecionado;
+            codSelecionado = Integer.parseInt(txtSelecionaCod.getText());
+            int quantSelecionada;
+            quantSelecionada = Integer.parseInt(txtSelecionaQuant.getText());
+            
+        }catch(Exception erro){
+            
+            erroMsg = "Erro";
+            JOptionPane.showMessageDialog(null, "O campo preenchido com a informacao contida nessa mensagem possui um erro! \n" + "Erro : " + erro + "\n");
+            
+        }
+        
+        if(erroMsg.equals("Erro")){
+            
+            JOptionPane.showMessageDialog(null, "Tente Novamente! \n");
+            
+        }else{
+        
         int codSelecionado = 0;
         int quantSelecionada = 0;
         String codigoIdent;
@@ -366,6 +388,7 @@ public class ProdutosCliente extends javax.swing.JFrame {
         System.out.println(resultado);
         }
             
+        }
         }
     }//GEN-LAST:event_txtEscolheProdActionPerformed
 

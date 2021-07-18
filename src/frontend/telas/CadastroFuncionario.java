@@ -185,6 +185,29 @@ public class CadastroFuncionario extends javax.swing.JFrame {
 
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
         // TODO add your handling code here:
+        
+        String erroMsg = "";
+        
+        try{
+            
+            int idade;
+            idade = Integer.parseInt(idadeFuncionario.getText());
+            int codEmpr;
+            codEmpr = Integer.parseInt(codEmpresa.getText());
+            
+            
+        }catch(Exception erro){
+            
+            erroMsg = "Erro";
+            JOptionPane.showMessageDialog(null, "A idade ou o codEmpr nao foi preenchida(o) com um numero inteiro! \n" + "Erro : " + erro + "\n");
+            
+        }
+        
+        if(erroMsg.equals("Erro")){
+            
+            JOptionPane.showMessageDialog(null, "Tente Novamente! \n");
+            
+        }else{
 
         int idade = Integer.parseInt(idadeFuncionario.getText().trim());
         
@@ -222,6 +245,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         if(verificador == 0 && codEmpr == 1234){
             bancoDeDados.addFuncionario(funcionario);
             JOptionPane.showMessageDialog(null, "Usuario cadastrado! \n");
+            bancoDeDados.gravarFuncionario();
 
         }
 
@@ -232,7 +256,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         
             }
         
-        bancoDeDados.gravarFuncionario();
+        }
     }//GEN-LAST:event_cadastrarActionPerformed
 
     private void nomeFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeFuncionarioActionPerformed

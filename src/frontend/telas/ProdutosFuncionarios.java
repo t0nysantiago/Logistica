@@ -229,10 +229,11 @@ public class ProdutosFuncionarios extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEditar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnFat)
-                            .addComponent(faturamento)
-                            .addComponent(txtFat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(faturamento)
+                                .addComponent(txtFat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtExcluiProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -300,6 +301,28 @@ public class ProdutosFuncionarios extends javax.swing.JFrame {
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
         
+        String erroMsg = null;
+        
+        try{
+            
+            int codigoDigitado;
+            codigoDigitado = Integer.parseInt(txtCodigo.getText());
+            int quantDigitada;
+            quantDigitada = Integer.parseInt(txtNovaQuant.getText());
+            
+        }catch(Exception erro){
+            
+            erroMsg = "Erro";
+            JOptionPane.showMessageDialog(null, "O campo preenchido com a informacao contida nessa mensagem possui um erro! \n" + "Erro : " + erro + "\n");
+            
+        }
+        
+        if(erroMsg.equals("Erro")){
+            
+            JOptionPane.showMessageDialog(null, "Tente Novamente! \n");
+            
+        }else{
+        
         int codigoDigitado = Integer.parseInt(txtCodigo.getText());
         int quantDigitada = Integer.parseInt(txtNovaQuant.getText());
         int pegaQuantEstoque = 0;
@@ -324,10 +347,11 @@ public class ProdutosFuncionarios extends javax.swing.JFrame {
             }
         }
         JOptionPane.showMessageDialog(null, "Produto Editado! \n");
+        bancoDeDados.gravarProdutos();
         txtCodigo.setText("");
         txtNovaQuant.setText("");
-        } 
-        bancoDeDados.gravarProdutos();
+        }
+        }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

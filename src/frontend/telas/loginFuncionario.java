@@ -146,6 +146,26 @@ public class loginFuncionario extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
+        String erroMsg = null;
+        
+        try{
+            
+            int codEmpr;
+            codEmpr = Integer.parseInt(codEmpresa.getText());
+            
+        }catch(Exception erro){
+            
+            erroMsg = "Erro";
+            JOptionPane.showMessageDialog(null, "O codigo da empresa nao foi preenchido com um numero inteiro! \n" + "Erro : " + erro + "\n");
+            
+        }
+        
+        if(erroMsg.equals("Erro")){
+            
+            JOptionPane.showMessageDialog(null, "Tente Novamente! \n");
+            
+        }else{
+        
         String codIdent = loginFunc.getText();
         
         if(codIdent.length() != 4){
@@ -177,6 +197,7 @@ public class loginFuncionario extends javax.swing.JFrame {
 
         if(verificador == 0){
             JOptionPane.showMessageDialog(null, "Usuario não cadastrado! \n");
+        }
         }
         }
     }//GEN-LAST:event_jButton1ActionPerformed

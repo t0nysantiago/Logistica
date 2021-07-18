@@ -7,6 +7,7 @@ package frontend.telas;
 import backend.Cliente;
 import backend.BancoDeDados;
 import frontend.Logistica;
+import java.util.InputMismatchException;
 import javax.swing.JOptionPane;
 
 /**
@@ -174,6 +175,26 @@ public class CadastroCliente extends javax.swing.JFrame {
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
         // TODO add your handling code here:
         
+        String erroMsg = null;
+        
+        try{
+            
+            int idade;
+            idade = Integer.parseInt(idadeCliente.getText());
+            
+        }catch(Exception erro){
+            
+            erroMsg = "Erro";
+            JOptionPane.showMessageDialog(null, "A idade nao foi preenchida com um numero inteiro! \n" + "Erro : " + erro + "\n");
+            
+        }
+        
+        if(erroMsg.equals("Erro")){
+            
+            JOptionPane.showMessageDialog(null, "Tente Novamente! \n");
+            
+        }else{
+        
         int idade = Integer.parseInt(idadeCliente.getText().trim());
         String nome = nomeCliente.getText();
         String codigo = codCliente.getText();
@@ -204,6 +225,7 @@ public class CadastroCliente extends javax.swing.JFrame {
        if(verificador == 0){
            bancoDeDados.addCliente(cliente);
                       JOptionPane.showMessageDialog(null, "Usuario cadastrado! \n");
+                      bancoDeDados.gravarClientes();
 
            
        }
@@ -217,8 +239,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         }
             }
         
-        
-        bancoDeDados.gravarClientes();
+        }
     }//GEN-LAST:event_cadastrarActionPerformed
 
     private void nomeClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeClienteActionPerformed
