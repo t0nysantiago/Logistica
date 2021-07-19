@@ -283,7 +283,7 @@ public class ProdutosCliente extends javax.swing.JFrame {
     private void txtEscolheProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEscolheProdActionPerformed
         // TODO add your handling code here:
         
-        String erroMsg = null;
+        String erroMsg = "";
         
         try{
             

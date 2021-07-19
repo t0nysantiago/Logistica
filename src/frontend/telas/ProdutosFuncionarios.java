@@ -301,7 +301,7 @@ public class ProdutosFuncionarios extends javax.swing.JFrame {
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
         
-        String erroMsg = null;
+        String erroMsg = "";
         
         try{
             

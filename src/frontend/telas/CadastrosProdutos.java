@@ -202,7 +202,7 @@ public class CadastrosProdutos extends javax.swing.JFrame {
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
         // TODO add your handling code here:
         
-        String erroMsg = null;
+        String erroMsg = "";
         
         try{
             

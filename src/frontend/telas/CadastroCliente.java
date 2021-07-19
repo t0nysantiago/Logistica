@@ -175,7 +175,7 @@ public class CadastroCliente extends javax.swing.JFrame {
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
         // TODO add your handling code here:
         
-        String erroMsg = null;
+        String erroMsg = "";
         
         try{
             
